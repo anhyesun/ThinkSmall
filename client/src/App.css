@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=PT+Serif+Caption&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@400;600;800&family=PT+Serif+Caption&display=swap');
+body {
+  font-family: 'Baloo 2', cursive;
+}
+
 .App {
   text-align: center;
 }

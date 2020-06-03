@@ -19,6 +19,10 @@ code {
   transform: translate(-50%, -50%);
 }
 
+* {
+  outline: none;
+}
+
 @media only screen and (max-width: 926px) {
   #root {
     position: static;

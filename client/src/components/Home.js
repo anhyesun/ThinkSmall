@@ -2,7 +2,7 @@ import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import src from '../assets/hug.jpg';
+import src from '../assets/hug.svg';
 
 const useStyles = matches => makeStyles({
     header: {
@@ -27,6 +27,7 @@ const useStyles = matches => makeStyles({
         width: matches ? 380 : 280,
     },
     img: {
+        background: '#fbebe3',
         borderRadius: '50%',
         objectFit: 'cover',
         height: matches ? 300 : 200,
@@ -57,7 +58,6 @@ const Home = () => {
     const classes = useStyles(matches)();
     return (
         <>
-            <h1 className={classes.header}>Are you...</h1>
             <div className={classes.container}>
                 <Square
                     title="Business Owner"

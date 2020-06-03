@@ -4,9 +4,15 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import Home from './components/Home';
 import List from './components/List';
+import Inbox from './components/inbox/Inbox';
 import './App.css';
+
+library.add(fab, faPaperPlane);
 
 function App() {
     return (
@@ -17,6 +23,9 @@ function App() {
                 </Route>
                 <Route path="/volunteers">
                     <List volunteers />
+                </Route>
+                <Route path="/inbox">
+                    <Inbox />
                 </Route>
                 <Route path="*">
                     <Home />
