@@ -14,12 +14,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const defaultTags = [
+<<<<<<< HEAD
   { label: "Call for designers", selected: false },
   { label: "Call for developers", selected: false },
   { label: "Call for translators", selected: false },
   { label: "Call for drivers", selected: false },
   { label: "Call for writers", selected: false },
+=======
+    { label: 'Call for designers',  selected: false},
+    { label: 'Call for developers', selected: false },
+    { label: 'Call for translators', selected: false },
+    { label: 'Call for drivers', selected: false },
+    { label: 'Call for writers', selected: false },
+
+>>>>>>> fb892e0f1a781f5af20e852dbc4db85d7d93acc3
 ];
 
 const DottedChip = withStyles({

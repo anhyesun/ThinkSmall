@@ -41,5 +41,6 @@ module.exports = {
     'react/no-unescaped-entities': OFF,
     indent: OFF,
     quotes: [ERROR, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+    // 'import/no-extraneous-dependencies': ['error', {"devDependencies": true}],
   },
 };
