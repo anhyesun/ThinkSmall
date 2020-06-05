@@ -20,7 +20,6 @@ const defaultTags = [
     { label: 'Call for translators', selected: false },
     { label: 'Call for drivers', selected: false },
     { label: 'Call for writers', selected: false },
-
 ];
 
 const DottedChip = withStyles({
