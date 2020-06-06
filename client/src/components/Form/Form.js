@@ -1,69 +1,46 @@
 import React, { useState } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme, withStyles, makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import {
     Button,
     Dialog,
-    DialogActions,
     DialogTitle as Title,
-    DialogContent,
-    DialogContentText,
     TextareaAutosize as Textarea,
-    Typography,
-    OutlinedInput,
 } from '@material-ui/core';
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
 } from 'react-places-autocomplete';
-import Tags from './Tags';
-import loader from '../assets/loader.svg';
+import {
+    Actions,
+    Content,
+    ContentText,
+    Input,
+    Text,
+} from './components';
+import Tags from '../Tags/Tags';
+import loader from '../../assets/loader.svg';
+import classes from '../../modules/form.module.css';
 
-const Actions = withStyles(theme => ({
-    root: {
-        padding: '16px 24px',
+const styles = {
+    active: {
+        backgroundColor: '#fafafa',
+        cursor: 'pointer',
+        padding: '7.5px 10px',
+        fontSize: 'small',
+        borderRadius: 4,
     },
-}))(DialogActions);
-
-const Content = withStyles(theme => ({
-    root: {
-        paddingTop: 0,
-        paddingBottom: 0,
+    inactive: {
+        backgroundColor: '#ffffff',
+        cursor: 'pointer',
+        padding: '7.5px 10px',
+        fontSize: 'small',
+        borderRadius: 4,
     },
-}))(DialogContent);
-
-const ContentText = withStyles(theme => ({
-    root: {
-        fontFamily: '\'Baloo 2\', cursive',
-        fontSize: 14,
-    },
-}))(DialogContentText);
-
-const Text = withStyles(theme => ({
-    root: {
-        fontFamily: '\'Baloo 2\', cursive',
-        fontSize: 14,
-    },
-}))(Typography);
-
-const Input = withStyles(theme => ({
-    root: {
-        fontFamily: '\'Baloo 2\', cursive',
-        fontSize: 14,
-    },
-}))(OutlinedInput);
+};
 
 const Suggestions = ({ loading, suggestions, getSuggestionItemProps }) => (
-    <div
-        className="autocomplete-dropdown-container"
-        style={{
-            width: '100%',
-            boxSizing: 'border-box',
-            borderRadius: 4,
-            border: '1px solid #ccc',
-            borderTop: 'none',
-        }}
-    >
+    <div className={['autocomplete-dropdown-container', classes.suggestions]}>
         {loading
             ? <LoadingIndicator />
             : suggestions.map(suggestion => {
@@ -71,12 +48,8 @@ const Suggestions = ({ loading, suggestions, getSuggestionItemProps }) => (
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
                 const style = suggestion.active
-                    ? {
-                        backgroundColor: '#fafafa', cursor: 'pointer', padding: '7.5px 10px', fontSize: 'small', borderRadius: 4,
-                    }
-                    : {
-                        backgroundColor: '#ffffff', cursor: 'pointer', padding: '7.5px 10px', fontSize: 'small', borderRadius: 4,
-                    };
+                    ? styles.active
+                    : styles.inactive;
                 return (
                     <div
                         {...getSuggestionItemProps(suggestion, {
@@ -98,24 +71,11 @@ const LoadingIndicator = () => (
     </div>
 );
 
-const useStyles = makeStyles(theme => ({
-    textarea: {
-        maxWidth: '100%',
-        minWidth: '100%',
-        fontFamily: '\'Baloo 2\', cursive',
-        borderRadius: 4,
-        border: '1px solid #ccc',
-        boxSizing: 'border-box',
-        padding: '11.5px 11px',
-    },
-}));
-
 const Form = () => {
     const [open, setOpen] = useState(true);
     const [address, setAddress] = useState('');
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const classes = useStyles();
 
     const handleClose = () => setOpen(false);
     const handleSelect = address => {
@@ -133,13 +93,7 @@ const Form = () => {
                     placeholder: 'Search Places ...',
                     className: 'location-search-input',
                 })}
-                style={{
-                    width: '100%',
-                    padding: '7.5px 11px',
-                    borderRadius: 4,
-                    border: '1px solid #ccc',
-                    boxSizing: 'border-box',
-                }}
+                className={classes.input}
             />
             {address && <Suggestions {...props} />}
         </div>

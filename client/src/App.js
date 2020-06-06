@@ -5,7 +5,8 @@ import {
     Route,
 } from 'react-router-dom';
 import Home from './components/Home';
-import List from './components/List';
+import BusinessList from './components/BusinessList';
+import VolunteerList from './components/VolunteerList';
 import './App.css';
 import NavBar from './components/navBar';
 
@@ -15,11 +16,11 @@ function App() {
             <Switch>
                 <Route path="/businesses">
                     <NavBar userType="Business" />
-                    <List businesses />
+                    <BusinessList />
                 </Route>
                 <Route path="/volunteers">
                     <NavBar userType="Volunteer" />
-                    <List volunteers />
+                    <VolunteerList />
                 </Route>
                 <Route path="*">
                     <Home />

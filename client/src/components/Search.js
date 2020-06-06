@@ -1,16 +1,13 @@
 import React from 'react';
 import SearchBar from 'material-ui-search-bar';
+import classes from '../modules/search.module.css';
 
 const Search = () => (
     <SearchBar
-            onChange={() => console.log('onChange')}
-            onRequestSearch={() => console.log('onRequestSearch')}
-            style={{
-                margin: '0 auto',
-                maxWidth: 800,
-                maxHeight: 30,
-            }}
+        className={classes.search}
+        onChange={() => console.log('onChange')}
+        onRequestSearch={() => console.log('onRequestSearch')}
     />
-    );
+);
 
 export default Search;

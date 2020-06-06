@@ -7,7 +7,6 @@ import Box from '@material-ui/core/Box';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import ButtonNavBar from './buttonNavBar';
 
-
 const useStyles = makeStyles(() => ({
     root: {
         color: 'black',
@@ -76,7 +75,7 @@ function NavBar({ userType }) {
                             John Doe
                         </div>
                         <div>
-                            {`${userType} user` }
+                            {`${userType} user`}
                         </div>
                     </div>
 
