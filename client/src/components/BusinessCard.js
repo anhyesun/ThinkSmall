@@ -53,6 +53,7 @@ const BusinessCard = props => {
             <Button size="small" color="primary" target="_blank">
                 Read More
             </Button>
+            <CardActions>
             <div>
                 {props.needsHelp
                 && <span>
@@ -64,6 +65,7 @@ const BusinessCard = props => {
                     </Button>
                    </span>}
             </div>
+            </CardActions>
         </Card>
     );
 };

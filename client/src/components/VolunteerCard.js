@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Divider from '@material-ui/core/Divider';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import CardHeader from '@material-ui/core/CardHeader';
 import UserTags from './UserTags';
 
 const useStyles = makeStyles({
@@ -20,6 +21,9 @@ const useStyles = makeStyles({
         paddingTop: '56.25%', // 16:9,
         marginTop: '30',
     },
+    header: {
+        textAlign: 'center',
+    },
 });
 
 const VolunteerCard = props => {
@@ -27,16 +31,14 @@ const VolunteerCard = props => {
 
     return (
         <Card className={classes.root}>
-             <CardActionArea>
             <CardMedia
                 className={classes.media}
                 image={props.avatar}
                 title="Volunteer Picture"
             />
+            <CardHeader className={classes.header} titleTypographyProps={{ variant: 'h5' }} title={props.name} />
+            <CardActionArea>
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h6">
-                    {props.volunteerName}
-                </Typography>
                 <Typography variant="subtitle1" component="h6">
                     <UserTags tags={props.tags} />
                 </Typography>
@@ -45,7 +47,7 @@ const VolunteerCard = props => {
                 </Typography>
                 <Divider className="MuiDivider-root" light />
             </CardContent>
-             </CardActionArea>
+            </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary" target="_blank">
                         Read More
