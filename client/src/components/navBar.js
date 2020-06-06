@@ -3,11 +3,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import ButtonNavBar from './buttonNavBar';
 
-//
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -28,16 +27,19 @@ const useStyles = makeStyles(() => ({
     middleStyleFontSize: {
         fontSize: '.75rem',
     },
-    buttonStyle: {
+
+    rightStyle: {
         color: 'grey',
         fontSize: '.75rem',
     },
-    // accountIdPanel: {
-    // display:'flex',
-    // }
+
+    flexStyle: {
+        display: 'flex',
+    },
+
 }));
 
-function VolunteerNavbar(props) {
+function NavBar({ userType }) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -69,27 +71,18 @@ function VolunteerNavbar(props) {
 
                     <Box mr="1em" />
 
-                    {/* Ask for help here */}
-                    <div className={classes.middleStyle}>
+                    <div className={classes.rightStyle}>
                         <div>
                             John Doe
                         </div>
                         <div>
-                            John Doe
+                            {`${userType} user` }
                         </div>
                     </div>
 
                     <Box mr="1rem" />
 
-                    <Button variant="outlined" className={classes.buttonStyle}>
-                        Provide Help
-                    </Button>
-
-                    <Box mr=".5rem" />
-
-                    <Button variant="outlined" className={classes.buttonStyle}>
-                        Register Volunteer
-                    </Button>
+                    <ButtonNavBar userType={userType} style={classes} />
 
 
                 </Toolbar>
@@ -98,4 +91,4 @@ function VolunteerNavbar(props) {
     );
 }
 
-export default VolunteerNavbar;
+export default NavBar;

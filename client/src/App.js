@@ -7,19 +7,18 @@ import {
 import Home from './components/Home';
 import List from './components/List';
 import './App.css';
-import BusinessNavbar from './components/BusinessNavbar';
-import VolunteerNavbar from './components/VolunteerNavbar';
+import NavBar from './components/navBar';
 
 function App() {
     return (
         <Router>
             <Switch>
                 <Route path="/businesses">
-                    <BusinessNavbar />
+                    <NavBar userType="Business" />
                     <List businesses />
                 </Route>
                 <Route path="/volunteers">
-                    <VolunteerNavbar />
+                    <NavBar userType="Volunteer" />
                     <List volunteers />
                 </Route>
                 <Route path="*">
