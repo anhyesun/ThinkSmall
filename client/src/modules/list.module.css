@@ -1,0 +1,28 @@
+.root {
+    flex-grow: 1;
+}
+
+.searchBar {
+    width: fit-content;
+    margin: 50px auto;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: auto;
+    padding: 20px;
+}
+
+.image {
+    width: 128px;
+    height: 128px;
+}
+
+.img {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}

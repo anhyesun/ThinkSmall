@@ -14,9 +14,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Tags() {
+export default function Tags({ tags: userTags, canAdd = false }) {
     const classes = useStyles();
-    const [tags, setTags] = useState(defaultTags);
+    const [tags, setTags] = useState(userTags || defaultTags);
     const selectTag = i => {
         tags[i].selected = !tags[i].selected;
         setTags([...tags]);
@@ -31,7 +31,7 @@ export default function Tags() {
                         : <UnselectedChip label={label} onClick={() => selectTag(i)} />}
                 </div>
             ))}
-            <DottedChip />
+            {canAdd && <DottedChip />}
         </div>
     );
 }

@@ -2,20 +2,19 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import ButtonNavBar from './buttonNavBar';
+import makeStyles from '@material-ui/styles/makeStyles';
+import ButtonNavBar from './ButtonNavBar';
 
 const useStyles = makeStyles(() => ({
     root: {
         color: 'black',
-        background: '#ffd180',
+        background: 'white',
     },
-
     typographyStyles: {
         flex: 1,
-
+        fontFamily: '\'Abril Fatface\', cursive',
     },
     middleStyle: {
         display: 'flex',
@@ -26,19 +25,16 @@ const useStyles = makeStyles(() => ({
     middleStyleFontSize: {
         fontSize: '.75rem',
     },
-
     rightStyle: {
         color: 'grey',
         fontSize: '.75rem',
     },
-
     flexStyle: {
         display: 'flex',
     },
-
 }));
 
-function NavBar({ userType }) {
+function NavBar({ userType, handleOpen }) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -65,11 +61,8 @@ function NavBar({ userType }) {
                         <Box mr=".5rem" />
                     </div>
                     <Box mr="2rem" />
-
                     <div className={classes.middleStyle}><AccountCircleOutlinedIcon /></div>
-
                     <Box mr="1em" />
-
                     <div className={classes.rightStyle}>
                         <div>
                             John Doe
@@ -78,12 +71,8 @@ function NavBar({ userType }) {
                             {`${userType} user`}
                         </div>
                     </div>
-
                     <Box mr="1rem" />
-
-                    <ButtonNavBar userType={userType} style={classes} />
-
-
+                    <ButtonNavBar userType={userType} handleOpen={handleOpen} style={classes} />
                 </Toolbar>
             </AppBar>
         </div>

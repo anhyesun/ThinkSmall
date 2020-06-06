@@ -1,5 +1,6 @@
 .search {
-    margin: 0 auto;
+    margin: auto;
     max-width: 800px;
     max-height: 30px;
+    padding: 5px 0;
 }

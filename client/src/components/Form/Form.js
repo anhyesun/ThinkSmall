@@ -71,13 +71,11 @@ const LoadingIndicator = () => (
     </div>
 );
 
-const Form = () => {
-    const [open, setOpen] = useState(true);
+const Form = ({ open, handleClose }) => {
     const [address, setAddress] = useState('');
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const handleClose = () => setOpen(false);
     const handleSelect = address => {
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
@@ -103,7 +101,6 @@ const Form = () => {
         <Dialog
             fullScreen={fullScreen}
             open={open}
-            onClose={handleClose}
             aria-labelledby="request-form"
         >
             <Title id="request-form" disableTypography>File a new request</Title>
@@ -121,12 +118,12 @@ const Form = () => {
                 <Text>Description of Business</Text>
                 <Textarea className={classes.textarea} aria-label="description" rowsMin={5} />
                 <Text>Request Details</Text>
-                <Tags />
+                <Tags canAdd />
                 <Textarea className={classes.textarea} aria-label="details" rowsMin={5} />
             </Content>
             <Actions>
-                <Button variant="outlined">Cancel</Button>
-                <Button variant="outlined">Submit</Button>
+                <Button variant="outlined" onClick={handleClose}>Cancel</Button>
+                <Button variant="outlined" onClick={handleClose}>Submit</Button>
             </Actions>
         </Dialog>
     );
