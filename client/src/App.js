@@ -4,12 +4,18 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faPaperPlane, faBars } from '@fortawesome/free-solid-svg-icons';
 import Home from './components/Home';
 import Form from './components/Form/Form';
+import Inbox from './components/Inbox/Inbox';
 import List from './components/List';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import { businesses, volunteers } from './constant';
 import './App.css';
+
+library.add(fab, faPaperPlane, faBars);
 
 function App() {
     const [open, setOpen] = useState(false);
@@ -18,14 +24,18 @@ function App() {
         <Router>
             <Switch>
                 <Route path="/businesses">
-                    <NavBar userType="Business" handleOpen={() => setOpen(true)} />
+                    <NavBar userType="business" handleOpen={() => setOpen(true)} />
                     <List businesses={businesses} />
                 </Route>
                 <Route path="/volunteers">
-                    <NavBar userType="Volunteer" />
+                    <NavBar userType="volunteer" />
                     <List volunteers={volunteers} />
                 </Route>
+                <Route path="/inbox">
+                    <Inbox />
+                </Route>
                 <Route path="*">
+                    <NavBar />
                     <Home />
                 </Route>
             </Switch>

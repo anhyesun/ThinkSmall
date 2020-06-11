@@ -1,0 +1,50 @@
+.root {
+    background: white;
+    box-shadow: none;
+    color: black;
+    font-size: small;
+}
+
+.account {
+    margin: auto 20px;
+}
+
+.button {
+    font-family: 'Baloo 2', cursive;
+    font-size: small;
+    margin-left: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+.link {
+    margin: auto 20px;
+    border-bottom: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.link:hover {
+    border-bottom: 1px solid;
+}
+
+@media (max-width: 576px) {
+    .flex {
+        display: block;
+    }
+
+    .link {
+        border-bottom: none;
+        display: block;
+        margin: 10px 20px;
+    }
+
+    .link:hover {
+        border-bottom: none;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+}
