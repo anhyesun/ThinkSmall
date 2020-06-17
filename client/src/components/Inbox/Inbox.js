@@ -17,7 +17,7 @@ const Inbox = ({ inbox }) => {
             <Text>This is your first conversation with your team</Text>
             <Text>Start the conversation!</Text>
         </div>
-);
+    );
 
     return (
         <div className={classes.root}>

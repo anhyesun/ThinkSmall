@@ -61,12 +61,12 @@ function NavBar({ userType, handleOpen }) {
                 onOpen={() => { }}
                 onClose={() => setOpen(false)}
                 PaperProps={{
-                    style: { width: 200 }
+                    style: { width: 200 },
                 }}
             >
                 <Links />
             </Drawer>
-        </StylesProvider >
+        </StylesProvider>
     );
 }
 

@@ -10,7 +10,8 @@ import { faPaperPlane, faBars } from '@fortawesome/free-solid-svg-icons';
 import Home from './components/Home';
 import Form from './components/Form/Form';
 import Inbox from './components/Inbox/Inbox';
-import List from './components/List';
+import BusinessesList from './components/BusinessesList';
+import VolunteersList from './components/VolunteersList';
 import NavBar from './components/NavBar/NavBar';
 import { businesses, volunteers } from './constant';
 import './App.css';
@@ -25,11 +26,11 @@ function App() {
             <Switch>
                 <Route path="/businesses">
                     <NavBar userType="business" handleOpen={() => setOpen(true)} />
-                    <List businesses={businesses} />
+                    <BusinessesList businesses={businesses} />
                 </Route>
                 <Route path="/volunteers">
                     <NavBar userType="volunteer" />
-                    <List volunteers={volunteers} />
+                    <VolunteersList volunteers={volunteers} />
                 </Route>
                 <Route path="/inbox">
                     <Inbox />
