@@ -10,6 +10,7 @@ import { faPaperPlane, faBars } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import Home from './components/Home';
 import Form from './components/Form/Form';
+import VolunteerForm from './components/Form/VolunteerForm';
 import Inbox from './components/Inbox/Inbox';
 import BusinessesList from './components/BusinessesList';
 import VolunteersList from './components/VolunteersList';
@@ -23,6 +24,7 @@ library.add(fab, faPaperPlane, faBars);
 
 function App({ switchState }) {
     const [open, setOpen] = useState(false);
+    const [volunteerOpen, setVolunteerOpen] = useState(false);
 
     return (
         <Router>
@@ -33,7 +35,7 @@ function App({ switchState }) {
                         : <BusinessesList businesses={businesses} />}
                 </Route>
                 <Route path="/volunteers">
-                    <NavBar userType="volunteer" />
+                    <NavBar userType="volunteer" handleOpen={() => setVolunteerOpen(true)} />
                     <VolunteersList volunteers={volunteers} />
                 </Route>
                 <Route path="/inbox">
@@ -45,6 +47,7 @@ function App({ switchState }) {
                 </Route>
             </Switch>
             <Form open={open} handleClose={() => setOpen(false)} />
+            <VolunteerForm open={volunteerOpen} handleClose={() => setVolunteerOpen(false)} />
         </Router>
     );
 }

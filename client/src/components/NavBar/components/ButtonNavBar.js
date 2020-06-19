@@ -9,7 +9,7 @@ const ButtonNavBar = ({ userType, handleOpen }) => {
             { title: 'Register Store' },
         ],
         volunteer: [
-            { title: 'Provide Help' },
+            { title: 'Provide Help', action: handleOpen },
             { title: 'Register User' },
         ],
     };
