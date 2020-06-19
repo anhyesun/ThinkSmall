@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import {
     PUSH_MESSAGE,
-    SET_CONVERSATION,
+    SET_CONVERSATION, SWITCH_VIEW,
 } from '../actions';
 import { now } from './helper';
 
@@ -99,6 +99,8 @@ const defaultConversations = [
     },
 ];
 
+const defaultSwitchState = false;
+
 export default combineReducers({
     users: (users = defaultUsers, action) => users,
     conversations: (conversations = defaultConversations, action) => {
@@ -122,6 +124,14 @@ export default combineReducers({
                 return action.id;
             default:
                 return conversation;
+        }
+    },
+    switchView: (switchState = defaultSwitchState, action) => {
+        switch (action.type) {
+            case SWITCH_VIEW:
+                return !switchState;
+            default:
+                return switchState;
         }
     },
 });

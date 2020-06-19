@@ -9,5 +9,8 @@
     "start": "cd client && yarn start",
     "lint": "cd client && yarn lint",
     "lint:fix": "cd client && yarn lint:fix"
+  },
+  "dependencies": {
+    "no-package-lock": "0.0.1"
   }
 }

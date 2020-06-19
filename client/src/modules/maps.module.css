@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@400;600;800&family=PT+Serif+Caption&display=swap');
+
+.root {
+    font-family: 'Baloo 2', cursive;
+    position: relative;
+    text-align: center;
+}
+
+.avatar{
+    width: 300px;
+    height: auto;
+}
+
+@media (max-width: 576px) {
+    .avatar{
+        width: 200px;
+        height: auto;
+    }
+}

@@ -11,6 +11,7 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { ButtonNavBar, Logo, Text } from './components';
 import classes from '../../modules/nav.module.css';
+import Switch from './components/Switch';
 
 const tabs = [
     { to: 'about', title: 'About' },
@@ -50,6 +51,9 @@ function NavBar({ userType, handleOpen }) {
                                 <>
                                     <AccountInfo />
                                     <ButtonNavBar userType={userType} handleOpen={handleOpen} />
+                                    {userType === 'business' && (
+                                        <Switch />
+                                    )}
                                 </>
                             )}
                         </>
@@ -65,6 +69,9 @@ function NavBar({ userType, handleOpen }) {
                 }}
             >
                 <Links />
+                {userType === 'business' && (
+                    <Switch />
+                )}
             </Drawer>
         </StylesProvider>
     );
