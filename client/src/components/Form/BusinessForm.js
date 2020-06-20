@@ -7,35 +7,15 @@ import {
     Dialog, DialogTitle as Title,
     TextareaAutosize as Textarea,
 } from '@material-ui/core';
-import PlacesAutocomplete, {
-    geocodeByAddress, getLatLng,
-} from 'react-places-autocomplete';
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import ImageUploader from 'react-images-upload';
 import {
     Actions,
     Content, ContentText, Text,
-    Input,
-    LoadingIndicator,
+    Input, Autocomplete,
 } from './components';
 import { addBusiness, closeForm } from '../../actions';
 import classes from '../../modules/form.module.css';
-
-const styles = {
-    active: {
-        backgroundColor: '#fafafa',
-        cursor: 'pointer',
-        padding: '7.5px 10px',
-        fontSize: 'small',
-        borderRadius: 4,
-    },
-    inactive: {
-        backgroundColor: '#ffffff',
-        cursor: 'pointer',
-        padding: '7.5px 10px',
-        fontSize: 'small',
-        borderRadius: 4,
-    },
-};
 
 const Form = ({ open = false, closeForm, addBusiness }) => {
     const [location, setLocation] = useState('');
@@ -82,44 +62,6 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
         reader.readAsDataURL(files[0]);
     };
 
-    const Suggestions = ({ loading, suggestions, getSuggestionItemProps }) => (
-        <div className={['autocomplete-dropdown-container', classes.suggestions]}>
-            {loading
-                ? <LoadingIndicator />
-                : suggestions.map(suggestion => {
-                    const className = suggestion.active
-                        ? 'suggestion-item--active'
-                        : 'suggestion-item';
-                    const style = suggestion.active
-                        ? styles.active
-                        : styles.inactive;
-                    return (
-                        <div
-                            {...getSuggestionItemProps(suggestion, {
-                                className,
-                                style,
-                            })}
-                        >
-                            <span>{suggestion.description}</span>
-                        </div>
-                    );
-                })}
-        </div>
-    );
-
-    const PlacesInput = ({ getInputProps, ...props }) => (
-        <div>
-            <input
-                {...getInputProps({
-                    placeholder: 'Search Places ...',
-                    className: 'location-search-input',
-                })}
-                className={classes.input}
-            />
-            {location && <Suggestions {...props} />}
-        </div>
-    );
-
     return (
         <Dialog
             fullScreen={fullScreen}
@@ -143,18 +85,16 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
                 />
                 <Text>Business Icon</Text>
                 <ImageUploader
-                    withIcon
                     buttonText="Choose images"
                     onChange={onDrop}
                     imgExtension={['.jpg', '.gif', '.png', '.gif']}
                     maxFileSize={5242880}
-                    withPreview
                     singleImage
+                    withIcon
+                    withPreview
                 />
                 <Text>Location</Text>
-                <PlacesAutocomplete value={location} onChange={setLocation} onSelect={onSelect}>
-                    {PlacesInput}
-                </PlacesAutocomplete>
+                <Autocomplete value={location} onChange={setLocation} onSelect={onSelect} />
                 <Text>Description of Business</Text>
                 <Textarea
                     className={classes.textarea}

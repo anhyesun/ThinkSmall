@@ -8,9 +8,10 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/styles/withStyles';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import CheckIcon from '@material-ui/icons/Check';
 import { connect } from 'react-redux';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import ErrorIcon from '@material-ui/icons/Error';
+import TelegramIcon from '@material-ui/icons/Telegram';
 import Tags from './Tags/Tags';
 import classes from '../modules/card.module.css';
 import { deleteBusiness, helpToggle } from '../actions';
@@ -32,6 +33,17 @@ const BusinessCard = ({
             title="Business Picture"
         />
         <CardContent>
+            <ToggleButton
+                size="small"
+                value="check"
+                onChange={() => helpToggle(id)}
+                style={{ border: 'none', color: needsHelp ? '#F22613' : '#F9690E', padding: 0 }}
+            >
+                {needsHelp ? <ErrorIcon fontSize="small" /> : <TelegramIcon fontSize="small" />}
+                <span style={{ margin: 'auto 5px' }}>
+                    {needsHelp ? 'Help needed' : 'I need help'}
+                </span>
+            </ToggleButton>
             <Text variant="h5" component="h6">
                 {storeName}
             </Text>
@@ -45,18 +57,6 @@ const BusinessCard = ({
             <a href="#" className={classes.link}>Read more</a>
         </CardContent>
         <CardActions className={classes.actions}>
-            <div>
-                <ToggleButton
-                    size="small"
-                    value="check"
-                    onChange={() => {
-                        helpToggle(id);
-                    }}
-                >
-                    Help Needed
-                    <CheckIcon />
-                </ToggleButton>
-            </div>
             {needsHelp && (
                 <ButtonGroup color="primary" aria-label="outlined primary button group">
                     <Button size="small" color="primary" target="_blank">Help Details</Button>
