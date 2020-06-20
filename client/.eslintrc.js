@@ -39,8 +39,8 @@ module.exports = {
     'react/jsx-props-no-spreading': OFF,
     'react/no-array-index-key': OFF,
     'react/no-unescaped-entities': OFF,
-    indent: OFF,
+    indent: [ERROR, 4],
     quotes: [ERROR, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
-    // 'import/no-extraneous-dependencies': ['error', {"devDependencies": true}],
+    'import/no-extraneous-dependencies': ['error', { "devDependencies": true }],
   },
 };

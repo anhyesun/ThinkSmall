@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {
- GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow,
+    GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow,
 } from 'react-google-maps';
-import { businesses } from '../constant';
+import { defaultBusinesses as businesses } from '../constant';
 import classes from '../modules/maps.module.css';
-
 
 function Map() {
     const [selectedBusiness, setSelectedBusiness] = useState(null);
@@ -21,7 +20,6 @@ function Map() {
                     />
                 )))}
         </div>
-
     );
 
     const InfoWindows = () => (
@@ -52,7 +50,7 @@ function Map() {
             <Markers />
             <InfoWindows />
         </GoogleMap>
-);
+    );
 }
 
 // must wrap the map with some more code for google maps to work
@@ -69,14 +67,11 @@ function Maps() {
                 loadingElement={<div style={{ height: '100%' }} />}
                 containerElement={<div style={{ height: '100%' }} />}
                 mapElement={<div style={{ height: '100%' }} />}
-
             />
         </div>
     );
 
-    return (
-        <DisplayMap />
- );
+    return <DisplayMap />;
 }
 
 export default Maps;

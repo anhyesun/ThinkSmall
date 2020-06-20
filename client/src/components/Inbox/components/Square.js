@@ -42,7 +42,7 @@ export default ({ type, color, user }) => (
             <div style={{ ...styles.square[type], background: color }}>
                 <p style={{ margin: 'auto' }}>{user.name.charAt(0)}</p>
             </div>
-)}
+        )}
         {user.src && <img src={user.src} style={styles.square[type]} alt={user.name} />}
     </>
-    );
+);

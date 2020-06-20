@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 const Card = ({
- id, message, timestamp, users,
+    id, message, timestamp, users,
 }) => {
     const classes = useStyles();
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
 import {
- Card, Input, Sidebar, Text,
+    Card, Input, Sidebar, Text,
 } from './components';
 import src from '../../assets/yoga.png';
 import classes from '../../modules/inbox.module.css';

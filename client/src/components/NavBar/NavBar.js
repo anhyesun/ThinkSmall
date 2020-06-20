@@ -21,7 +21,7 @@ const tabs = [
 ];
 
 function NavBar({ userType, handleOpen }) {
-    const matches = useMediaQuery('(min-width:576px)');
+    const matches = useMediaQuery('(min-width:991.98px)');
     const [open, setOpen] = useState(false);
     const Links = () => (
         <div className={classes.flex}>

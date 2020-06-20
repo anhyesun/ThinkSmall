@@ -5,7 +5,7 @@ import classes from '../modules/search.module.css';
 const Search = () => {
     const [search, setSearch] = useState('');
     const handleSearch = () => {
-        console.log(search);
+        // TODO: implement searching functionality
         setSearch('');
     };
 

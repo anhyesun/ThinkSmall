@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import Tags from './Tags/Tags';
 import Search from './Search';
@@ -13,7 +14,7 @@ const BusinessesList = ({ businesses }) => {
         </div>
     );
     const [currentPage, setPage] = useState(1);
-    const handleChange = (event, currentPage) => {
+    const handleChange = (_, currentPage) => {
         setPage(currentPage);
     };
 
@@ -30,16 +31,17 @@ const BusinessesList = ({ businesses }) => {
                     )}
                 />
             </div>
-
             <div className={classes.container}>
                 {businesses && businesses
                     .slice((currentPage - 1) * 6, currentPage * 6)
                     .map(({ id, ...props }) => (
-                        <BusinessCard key={id} {...props} />
-                ))}
+                        <BusinessCard key={id} id={id} {...props} />
+                    ))}
             </div>
         </div>
     );
 };
 
-export default BusinessesList;
+const mapStateToProps = ({ businesses }) => ({ businesses });
+
+export default connect(mapStateToProps)(BusinessesList);

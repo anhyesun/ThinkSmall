@@ -14,9 +14,9 @@ const VolunteerCard = ({
 }) => (
     <Card className={classes.root}>
         <CardMedia
-                className={classes.media}
-                image={avatar}
-                title="Volunteer Picture"
+            className={classes.media}
+            image={avatar}
+            title="Volunteer Picture"
         />
         <CardContent>
             <Typography variant="h5" component="h6" style={{ fontFamily: '\'Baloo 2\', cursive' }}>
@@ -35,6 +35,6 @@ const VolunteerCard = ({
             <Button size="small" color="primary" target="_blank">Start Conversation</Button>
         </CardActions>
     </Card>
-    );
+);
 
 export default VolunteerCard;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import {
@@ -15,11 +16,13 @@ import {
     Text,
 } from './components';
 import Tags from '../Tags/Tags';
+import { closeForm } from '../../actions';
 import classes from '../../modules/form.module.css';
 
-const VolunteerForm = ({ open, handleClose }) => {
+const VolunteerForm = ({ open = false, closeForm }) => {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const onClose = () => closeForm('volunteer');
 
     return (
         <Dialog
@@ -39,14 +42,15 @@ const VolunteerForm = ({ open, handleClose }) => {
                 <Tags canAdd />
                 <Textarea className={classes.textarea} aria-label="description" rowsMin={5} />
                 <Text>Portfolio or resume link</Text>
-                <Input autoFocus margin="dense" fullWidth placeholder="http://" />
+                <Input margin="dense" fullWidth placeholder="http://" />
             </Content>
             <Actions>
-                <Button variant="outlined" onClick={handleClose}>Cancel</Button>
-                <Button variant="outlined" onClick={handleClose}>Submit</Button>
+                <Button variant="outlined" onClick={onClose}>Cancel</Button>
+                <Button variant="outlined" onClick={onClose}>Submit</Button>
             </Actions>
         </Dialog>
     );
 };
 
-export default VolunteerForm;
+const mapStateToProps = ({ forms }) => ({ open: forms.volunteer });
+export default connect(mapStateToProps, { closeForm })(VolunteerForm);

@@ -12,14 +12,14 @@ const Sidebar = ({ conversations, setConversation }) => (
             <Subtitle key={id} onClick={() => setConversation(id)}>
                 {`# ${title}`}
             </Subtitle>
-            ))}
+        ))}
         <Title>People</Title>
         {conversations.filter(({ channel }) => !channel).map(({ id, title }, i) => (
             <Subtitle key={id} onClick={() => setConversation(id)}>
                 {title}
             </Subtitle>
-            ))}
+        ))}
     </div>
-    );
+);
 
 export default connect(({ conversations }) => ({ conversations }), { setConversation })(Sidebar);

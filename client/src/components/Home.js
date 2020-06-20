@@ -14,7 +14,7 @@ const Square = ({
             </div>
         </div>
     </Link>
-    );
+);
 
 const Home = () => (
     <div className={classes.root}>

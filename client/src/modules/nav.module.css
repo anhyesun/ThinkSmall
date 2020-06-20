@@ -29,7 +29,34 @@
     border-bottom: 1px solid;
 }
 
-@media (max-width: 576px) {
+.toggle {
+    background: #343434;
+    border-radius: 15px;
+    cursor: pointer;
+    height: 25px;
+    width: 50px;
+}
+
+.toggle .thumb {
+    background: white;
+    border-radius: 50%;
+    height: 19px;
+    left: 0;
+    margin: 3px;
+    position: relative;
+    width: 19px;
+}
+
+.toggle.dark {
+    background: white;
+}
+
+.toggle.dark .thumb {
+    background: #343434;
+    left: 25px;
+}
+
+@media (max-width: 991.98px) {
     .flex {
         display: block;
     }
