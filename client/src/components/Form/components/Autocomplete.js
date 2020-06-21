@@ -1,8 +1,8 @@
-import React from 'react';
-import PlacesAutocomplete from 'react-places-autocomplete';
-import LoadingIndicator from './LoadingIndicator';
-import { styles } from '../../../constant';
-import classes from '../../../modules/form.module.css';
+import React from 'react'
+import PlacesAutocomplete from 'react-places-autocomplete'
+import LoadingIndicator from './LoadingIndicator'
+import { styles } from '../../../constant'
+import classes from '../../../modules/form.module.css'
 
 const Autocomplete = ({ value, onChange, onSelect }) => {
     const Suggestions = ({ loading, suggestions, getSuggestionItemProps }) => (
@@ -12,10 +12,10 @@ const Autocomplete = ({ value, onChange, onSelect }) => {
                 : suggestions.map(suggestion => {
                     const className = suggestion.active
                         ? 'suggestion-item--active'
-                        : 'suggestion-item';
+                        : 'suggestion-item'
                     const style = suggestion.active
                         ? styles.active
-                        : styles.inactive;
+                        : styles.inactive
                     return (
                         <div
                             {...getSuggestionItemProps(suggestion, {
@@ -25,10 +25,10 @@ const Autocomplete = ({ value, onChange, onSelect }) => {
                         >
                             <span>{suggestion.description}</span>
                         </div>
-                    );
+                    )
                 })}
         </div>
-    );
+    )
     const PlacesInput = ({ getInputProps, ...props }) => (
         <div>
             <input
@@ -40,12 +40,12 @@ const Autocomplete = ({ value, onChange, onSelect }) => {
             />
             {value && <Suggestions {...props} />}
         </div>
-    );
+    )
     return (
         <PlacesAutocomplete {...{ value, onChange, onSelect }}>
             {PlacesInput}
         </PlacesAutocomplete>
-    );
-};
+    )
+}
 
-export default Autocomplete;
+export default Autocomplete

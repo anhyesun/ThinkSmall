@@ -1,28 +1,28 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import React from 'react'
+import { connect } from 'react-redux'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useTheme } from '@material-ui/core/styles'
 import {
     Button,
     Dialog,
     DialogTitle as Title,
     TextareaAutosize as Textarea,
-} from '@material-ui/core';
+} from '@material-ui/core'
 import {
     Actions,
     Content,
     ContentText,
     Input,
     Text,
-} from './components';
-import Tags from '../Tags/Tags';
-import { closeForm } from '../../actions';
-import classes from '../../modules/form.module.css';
+} from './components'
+import Tags from '../Tags/Tags'
+import { closeForm } from '../../actions'
+import classes from '../../modules/form.module.css'
 
 const VolunteerForm = ({ open = false, closeForm }) => {
-    const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const onClose = () => closeForm('volunteer');
+    const theme = useTheme()
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
+    const onClose = () => closeForm('volunteer')
 
     return (
         <Dialog
@@ -49,8 +49,8 @@ const VolunteerForm = ({ open = false, closeForm }) => {
                 <Button variant="outlined" onClick={onClose}>Submit</Button>
             </Actions>
         </Dialog>
-    );
-};
+    )
+}
 
-const mapStateToProps = ({ forms }) => ({ open: forms.volunteer });
-export default connect(mapStateToProps, { closeForm })(VolunteerForm);
+const mapStateToProps = ({ forms }) => ({ open: forms.volunteer })
+export default connect(mapStateToProps, { closeForm })(VolunteerForm)

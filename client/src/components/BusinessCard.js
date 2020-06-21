@@ -1,26 +1,26 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/styles/withStyles';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import { connect } from 'react-redux';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import ErrorIcon from '@material-ui/icons/Error';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import Tags from './Tags/Tags';
-import classes from '../modules/card.module.css';
-import { deleteBusiness, helpToggle } from '../actions';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Divider from '@material-ui/core/Divider'
+import Typography from '@material-ui/core/Typography'
+import withStyles from '@material-ui/styles/withStyles'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+import { connect } from 'react-redux'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
+import ErrorIcon from '@material-ui/icons/Error'
+import TelegramIcon from '@material-ui/icons/Telegram'
+import Tags from './Tags/Tags'
+import classes from '../modules/card.module.css'
+import { deleteBusiness, helpToggle } from '../actions'
 
 const Text = withStyles({
     root: {
         fontFamily: '\'Baloo 2\', cursive',
     },
-})(Typography);
+})(Typography)
 
 const BusinessCard = ({
     id, avatar, storeName, tags = [], description, storeOwner, location, needsHelp,
@@ -63,11 +63,11 @@ const BusinessCard = ({
                     <Button size="small" color="primary" target="_blank">Contact Owner</Button>
                 </ButtonGroup>
             )}
-            <Button size="small" color="secondary" variant="outlined" onClick={() => { deleteBusiness(id); }}>Delete</Button>
+            <Button size="small" color="secondary" variant="outlined" onClick={() => { deleteBusiness(id) }}>Delete</Button>
         </CardActions>
     </Card>
-);
+)
 
-const mapStateToProps = ({ businesses }) => ({ businesses });
+const mapStateToProps = ({ businesses }) => ({ businesses })
 
-export default connect(mapStateToProps, { deleteBusiness, helpToggle })(BusinessCard);
+export default connect(mapStateToProps, { deleteBusiness, helpToggle })(BusinessCard)

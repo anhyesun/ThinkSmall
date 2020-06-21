@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Pagination, PaginationItem } from '@material-ui/lab';
-import Tags from './Tags/Tags';
-import Search from './Search';
-import BusinessCard from './BusinessCard';
-import classes from '../modules/list.module.css';
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { Pagination, PaginationItem } from '@material-ui/lab'
+import Tags from './Tags/Tags'
+import Search from './Search'
+import BusinessCard from './BusinessCard'
+import classes from '../modules/list.module.css'
 
 const BusinessesList = ({ businesses }) => {
     const SearchBar = () => (
@@ -12,11 +12,11 @@ const BusinessesList = ({ businesses }) => {
             <Search />
             <Tags />
         </div>
-    );
-    const [currentPage, setPage] = useState(1);
+    )
+    const [currentPage, setPage] = useState(1)
     const handleChange = (_, currentPage) => {
-        setPage(currentPage);
-    };
+        setPage(currentPage)
+    }
 
     return (
         <div className={classes.root}>
@@ -39,9 +39,9 @@ const BusinessesList = ({ businesses }) => {
                     ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = ({ businesses }) => ({ businesses });
+const mapStateToProps = ({ businesses }) => ({ businesses })
 
-export default connect(mapStateToProps)(BusinessesList);
+export default connect(mapStateToProps)(BusinessesList)

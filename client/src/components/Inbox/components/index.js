@@ -1,7 +1,7 @@
-import Card from './Card';
-import Input from './Input';
-import Sidebar from './Sidebar';
-import { Text, Title, Subtitle } from './Text';
+import Card from './Card'
+import Input from './Input'
+import Sidebar from './Sidebar'
+import { Text, Title, Subtitle } from './Text'
 
 export {
     Card,
@@ -10,4 +10,4 @@ export {
     Text,
     Title,
     Subtitle,
-};
+}

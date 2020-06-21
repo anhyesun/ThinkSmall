@@ -13,7 +13,7 @@ export const styles = {
         fontSize: 'small',
         borderRadius: 4,
     },
-};
+}
 
 export const defaultUsers = [
     {
@@ -32,7 +32,7 @@ export const defaultUsers = [
         id: 3,
         name: 'Jenny',
     },
-];
+]
 
 export const defaultConversations = [
     {
@@ -107,9 +107,9 @@ export const defaultConversations = [
             },
         ],
     },
-];
+]
 
-export const defaultRequests = [];
+export const defaultRequests = []
 
 export const defaultTags = [
     { label: 'Call for designers', selected: false },
@@ -117,7 +117,7 @@ export const defaultTags = [
     { label: 'Call for translators', selected: false },
     { label: 'Call for drivers', selected: false },
     { label: 'Call for writers', selected: false },
-];
+]
 
 export const defaultVolunteers = [{
     id: 111,
@@ -209,7 +209,7 @@ export const defaultVolunteers = [{
     avatar: 'https://images.unsplash.com/photo-1482961674540-0b0e8363a005?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
     description: 'More volunteers here',
     tags: [{ label: 'Food Designer' }, { label: 'Speaks German', color: 'secondary' }],
-}];
+}]
 
 export const defaultBusinesses = [{
     id: 411,
@@ -380,4 +380,4 @@ export const defaultBusinesses = [{
     description: 'Cozy Italian trattoria with a warm vibe & outdoor seating, plus homemade pasta mains & a tapas menu.',
     needsHelp: false,
     tags: [{ label: 'Italian' }, { label: 'Food', color: 'secondary' }],
-}];
+}]

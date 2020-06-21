@@ -31,6 +31,7 @@ module.exports = {
     'no-underscore-dangle': OFF,
     'no-unused-vars': [ON, { args: 'none' }],
     'no-use-before-define': OFF,
+    'semi': [ERROR, 'never'],
     'react/prop-types': OFF,
     'react/jsx-indent': [ON, 4],
     'react/jsx-indent-props': OFF,

@@ -1,11 +1,11 @@
-import DialogContent from '@material-ui/core/DialogContent';
-import { withStyles } from '@material-ui/core/styles';
+import DialogContent from '@material-ui/core/DialogContent'
+import { withStyles } from '@material-ui/core/styles'
 
 const Content = withStyles({
     root: {
         paddingTop: 0,
         paddingBottom: 0,
     },
-})(DialogContent);
+})(DialogContent)
 
-export default Content;
+export default Content

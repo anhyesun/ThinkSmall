@@ -1,5 +1,5 @@
-import withStyles from '@material-ui/styles/withStyles';
-import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/styles/withStyles'
+import Typography from '@material-ui/core/Typography'
 
 export const Text = withStyles({
     root: {
@@ -8,7 +8,7 @@ export const Text = withStyles({
         textAlign: 'center',
         margin: '0 auto',
     },
-})(Typography);
+})(Typography)
 
 export const Title = withStyles({
     root: {
@@ -18,7 +18,7 @@ export const Title = withStyles({
         fontFamily: '\'Baloo 2\', cursive',
         fontSize: 'small',
     },
-})(Typography);
+})(Typography)
 
 export const Subtitle = withStyles({
     root: {
@@ -28,4 +28,4 @@ export const Subtitle = withStyles({
         fontFamily: '\'Baloo 2\', cursive',
         fontSize: 'small',
     },
-})(Typography);
+})(Typography)

@@ -1,10 +1,10 @@
-import { SET_CONVERSATION } from '../actions';
+import { SET_CONVERSATION } from '../actions'
 
 export default (conversation = 0, action) => {
     switch (action.type) {
     case SET_CONVERSATION:
-        return action.id;
+        return action.id
     default:
-        return conversation;
+        return conversation
     }
-};
+}

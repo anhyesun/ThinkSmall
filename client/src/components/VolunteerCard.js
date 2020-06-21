@@ -1,13 +1,13 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import Tags from './Tags/Tags';
-import classes from '../modules/card.module.css';
+import React from 'react'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import Tags from './Tags/Tags'
+import classes from '../modules/card.module.css'
 
 const VolunteerCard = ({
     avatar, volunteerName, description, tags,
@@ -35,6 +35,6 @@ const VolunteerCard = ({
             <Button size="small" color="primary" target="_blank">Start Conversation</Button>
         </CardActions>
     </Card>
-);
+)
 
-export default VolunteerCard;
+export default VolunteerCard

@@ -1,7 +1,7 @@
-import React from 'react';
-import Chip from '@material-ui/core/Chip';
-import { withStyles } from '@material-ui/core/styles';
-import classes from '../../../modules/tags.module.css';
+import React from 'react'
+import Chip from '@material-ui/core/Chip'
+import { withStyles } from '@material-ui/core/styles'
+import classes from '../../../modules/tags.module.css'
 
 const SelectedChip = withStyles({
     root: {
@@ -20,7 +20,7 @@ const SelectedChip = withStyles({
         background: 'salmon',
         borderColor: 'transparent',
     },
-})(Chip);
+})(Chip)
 
 export default ({ label, onClick }) => (
     <SelectedChip
@@ -31,4 +31,4 @@ export default ({ label, onClick }) => (
         className={classes.tag}
         onClick={onClick}
     />
-);
+)

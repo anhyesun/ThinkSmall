@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const styles = {
     square: {
@@ -34,7 +34,7 @@ const styles = {
             width: 50,
         },
     },
-};
+}
 
 export default ({ type, color, user }) => (
     <>
@@ -45,4 +45,4 @@ export default ({ type, color, user }) => (
         )}
         {user.src && <img src={user.src} style={styles.square[type]} alt={user.name} />}
     </>
-);
+)

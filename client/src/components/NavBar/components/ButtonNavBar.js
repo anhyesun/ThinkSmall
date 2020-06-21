@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
-import classes from '../../../modules/nav.module.css';
-import { openForm } from '../../../actions';
+import React from 'react'
+import { connect } from 'react-redux'
+import Button from '@material-ui/core/Button'
+import classes from '../../../modules/nav.module.css'
+import { openForm } from '../../../actions'
 
 const ButtonNavBar = ({ userType, openForm }) => {
     const options = {
@@ -14,7 +14,7 @@ const ButtonNavBar = ({ userType, openForm }) => {
             { title: 'Provide Help', action: () => openForm('help') },
             { title: 'Register User', action: () => openForm('volunteer') },
         ],
-    };
+    }
     return (
         <div className={classes.flex}>
             {options[userType].map(({ title, action }) => (
@@ -29,7 +29,7 @@ const ButtonNavBar = ({ userType, openForm }) => {
                 </Button>
             ))}
         </div>
-    );
-};
+    )
+}
 
-export default connect(null, { openForm })(ButtonNavBar);
+export default connect(null, { openForm })(ButtonNavBar)

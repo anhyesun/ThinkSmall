@@ -1,5 +1,5 @@
-import { Select as BaseSelect, MenuItem as BaseMenuItem } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Select as BaseSelect, MenuItem as BaseMenuItem } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 
 export const Select = withStyles({
     root: {
@@ -10,11 +10,11 @@ export const Select = withStyles({
         padding: 7.5,
         paddingLeft: 15,
     },
-})(BaseSelect);
+})(BaseSelect)
 
 export const MenuItem = withStyles({
     root: {
         fontFamily: '\'Baloo 2\', cursive',
         fontSize: 14,
     },
-})(BaseMenuItem);
+})(BaseMenuItem)

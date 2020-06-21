@@ -1,7 +1,7 @@
-import React from 'react';
-import Chip from '@material-ui/core/Chip';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react'
+import Chip from '@material-ui/core/Chip'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+import { withStyles } from '@material-ui/core/styles'
 
 const DottedChip = withStyles({
     root: {
@@ -9,7 +9,7 @@ const DottedChip = withStyles({
         background: '#fafafa',
         fontFamily: '\'Baloo 2\', cursive',
     },
-})(Chip);
+})(Chip)
 
 export default () => (
     <DottedChip
@@ -18,4 +18,4 @@ export default () => (
         label="Add a new tag"
         clickable
     />
-);
+)

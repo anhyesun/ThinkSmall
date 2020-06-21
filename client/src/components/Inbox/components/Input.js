@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useKeyPressEvent } from 'react-use';
-import { makeStyles } from '@material-ui/styles';
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import { connect } from 'react-redux';
-import { push } from '../../../actions';
+import React, { useState } from 'react'
+import { useKeyPressEvent } from 'react-use'
+import { makeStyles } from '@material-ui/styles'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { connect } from 'react-redux'
+import { push } from '../../../actions'
 
 const useStyles = makeStyles({
     root: {
@@ -29,21 +29,21 @@ const useStyles = makeStyles({
         cursor: 'pointer',
         fontFamily: '\'Baloo 2\', cursive',
     },
-});
+})
 
 const Input = ({
     uid = 0, iid = 0, push,
 }) => {
-    const classes = useStyles();
-    const [message, setMessage] = useState('');
+    const classes = useStyles()
+    const [message, setMessage] = useState('')
     const pushMessage = () => {
         if (message) {
-            push(uid, iid, message);
-            setMessage('');
+            push(uid, iid, message)
+            setMessage('')
         }
-    };
+    }
 
-    useKeyPressEvent('Enter', pushMessage);
+    useKeyPressEvent('Enter', pushMessage)
 
     return (
         <div className={classes.root}>
@@ -52,7 +52,7 @@ const Input = ({
                 <Icon icon="paper-plane" style={{ color: message ? '#00aa8d' : 'inherit' }} />
             </button>
         </div>
-    );
-};
+    )
+}
 
-export default connect(({ id: uid, conversation: iid }) => ({ uid, iid }), { push })(Input);
+export default connect(({ id: uid, conversation: iid }) => ({ uid, iid }), { push })(Input)

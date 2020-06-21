@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
     GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow,
-} from 'react-google-maps';
-import { defaultBusinesses as businesses } from '../constant';
-import classes from '../modules/maps.module.css';
+} from 'react-google-maps'
+import { defaultBusinesses as businesses } from '../constant'
+import classes from '../modules/maps.module.css'
 
 function Map() {
-    const [selectedBusiness, setSelectedBusiness] = useState(null);
+    const [selectedBusiness, setSelectedBusiness] = useState(null)
     const Markers = () => (
         <div>
             {businesses.map(business => (business.needsHelp
@@ -15,19 +15,19 @@ function Map() {
                         key={business.id}
                         position={{ lat: business.lat, lng: business.lng }}
                         onClick={() => {
-                            setSelectedBusiness(business);
+                            setSelectedBusiness(business)
                         }}
                     />
                 )))}
         </div>
-    );
+    )
 
     const InfoWindows = () => (
         <div>
             {selectedBusiness && (
                 <InfoWindow
                     position={{ lat: selectedBusiness.lat, lng: selectedBusiness.lng }}
-                    onCloseClick={() => { setSelectedBusiness(null); }}
+                    onCloseClick={() => { setSelectedBusiness(null) }}
                 >
                     <div className={classes.root}>
                         <h3>{selectedBusiness.storeName}</h3>
@@ -40,7 +40,7 @@ function Map() {
                 </InfoWindow>
             )}
         </div>
-    );
+    )
 
     return (
         <GoogleMap
@@ -50,12 +50,12 @@ function Map() {
             <Markers />
             <InfoWindows />
         </GoogleMap>
-    );
+    )
 }
 
 // must wrap the map with some more code for google maps to work
-const WrappedMap = withScriptjs(withGoogleMap(Map));
-const API_KEY = process.env.REACT_APP_API_KEY;
+const WrappedMap = withScriptjs(withGoogleMap(Map))
+const API_KEY = process.env.REACT_APP_API_KEY
 // {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${API_KEY}`}
 // ask about witch and why display map cant be componentized
 
@@ -69,9 +69,9 @@ function Maps() {
                 mapElement={<div style={{ height: '100%' }} />}
             />
         </div>
-    );
+    )
 
-    return <DisplayMap />;
+    return <DisplayMap />
 }
 
-export default Maps;
+export default Maps

@@ -1,27 +1,27 @@
-import React from 'react';
+import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-} from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+} from 'react-router-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import {
     faPaperPlane, faBars, faList, faMapMarkedAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { connect } from 'react-redux';
-import Home from './components/Home';
-import BusinessForm from './components/Form/BusinessForm';
-import RequestForm from './components/Form/RequestForm';
-import VolunteerForm from './components/Form/VolunteerForm';
-import Inbox from './components/Inbox/Inbox';
-import BusinessesList from './components/BusinessesList';
-import VolunteersList from './components/VolunteersList';
-import NavBar from './components/NavBar/NavBar';
-import './App.css';
-import Maps from './components/Maps';
+} from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux'
+import Home from './components/Home'
+import BusinessForm from './components/Form/BusinessForm'
+import RequestForm from './components/Form/RequestForm'
+import VolunteerForm from './components/Form/VolunteerForm'
+import Inbox from './components/Inbox/Inbox'
+import BusinessesList from './components/BusinessesList'
+import VolunteersList from './components/VolunteersList'
+import NavBar from './components/NavBar/NavBar'
+import './App.css'
+import Maps from './components/Maps'
 
-library.add(fab, faPaperPlane, faBars, faList, faMapMarkedAlt);
+library.add(fab, faPaperPlane, faBars, faList, faMapMarkedAlt)
 
 function App({ switchState }) {
     return (
@@ -47,9 +47,9 @@ function App({ switchState }) {
                 </Route>
             </Switch>
         </Router>
-    );
+    )
 }
 
-const mapStateToProps = ({ switchState }) => ({ switchState });
+const mapStateToProps = ({ switchState }) => ({ switchState })
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)

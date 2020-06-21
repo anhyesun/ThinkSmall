@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/styles';
-import Square from './Square';
+import React from 'react'
+import { connect } from 'react-redux'
+import { makeStyles } from '@material-ui/styles'
+import Square from './Square'
 
-const colors = ['#FFC759', '#FF7B9C', '#607196', '#BABFD1'];
+const colors = ['#FFC759', '#FF7B9C', '#607196', '#BABFD1']
 const useStyles = makeStyles({
     card: {
         display: 'flex',
@@ -14,12 +14,12 @@ const useStyles = makeStyles({
         fontWeight: 'normal',
         color: '#686868',
     },
-});
+})
 
 const Card = ({
     id, message, timestamp, users,
 }) => {
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <div className={classes.card}>
@@ -33,9 +33,9 @@ const Card = ({
                 <div>{message}</div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = ({ users }) => ({ users });
+const mapStateToProps = ({ users }) => ({ users })
 
-export default connect(mapStateToProps)(Card);
+export default connect(mapStateToProps)(Card)

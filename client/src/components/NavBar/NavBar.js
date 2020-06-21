@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
     AppBar,
     SwipeableDrawer as Drawer,
     Toolbar,
     useMediaQuery,
-} from '@material-ui/core';
-import { StylesProvider } from '@material-ui/core/styles';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import { ButtonNavBar, Logo, Text } from './components';
-import classes from '../../modules/nav.module.css';
-import Switch from './components/Switch';
+} from '@material-ui/core'
+import { StylesProvider } from '@material-ui/core/styles'
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { ButtonNavBar, Logo, Text } from './components'
+import classes from '../../modules/nav.module.css'
+import Switch from './components/Switch'
 
 const tabs = [
     { to: 'about', title: 'About' },
     { to: 'businesses', title: 'Small Businesses' },
     { to: 'volunteers', title: 'Volunteers' },
     { to: 'contact', title: 'Contact Us' },
-];
+]
 
 function NavBar({ userType, handleOpen }) {
-    const matches = useMediaQuery('(min-width:991.98px)');
-    const [open, setOpen] = useState(false);
+    const matches = useMediaQuery('(min-width:991.98px)')
+    const [open, setOpen] = useState(false)
     const Links = () => (
         <div className={classes.flex}>
             {tabs.map(({ to, title }) => (
                 <Link key={to} to={to} className={classes.link}>{title}</Link>
             ))}
         </div>
-    );
+    )
     const AccountInfo = () => (
         <>
             <AccountCircleOutlinedIcon />
@@ -38,7 +38,7 @@ function NavBar({ userType, handleOpen }) {
                 <Text>{`${userType} user`}</Text>
             </div>
         </>
-    );
+    )
     return (
         <StylesProvider injectFirst>
             <AppBar position="static" color="transparent" className={classes.root}>
@@ -74,7 +74,7 @@ function NavBar({ userType, handleOpen }) {
                 )}
             </Drawer>
         </StylesProvider>
-    );
+    )
 }
 
-export default NavBar;
+export default NavBar

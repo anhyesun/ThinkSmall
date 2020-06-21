@@ -4,4 +4,4 @@
 export const now = () => new Date().toLocaleTimeString(navigator.language, {
     hour: 'numeric',
     minute: 'numeric',
-});
+})

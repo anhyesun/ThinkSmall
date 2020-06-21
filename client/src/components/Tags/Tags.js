@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { SelectedChip, UnselectedChip, DottedChip } from './components/index';
-import { defaultTags } from '../../constant';
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { SelectedChip, UnselectedChip, DottedChip } from './components/index'
+import { defaultTags } from '../../constant'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,15 +12,15 @@ const useStyles = makeStyles(theme => ({
             margin: theme.spacing(0.5),
         },
     },
-}));
+}))
 
 export default function Tags({ tags: userTags, canAdd = false }) {
-    const classes = useStyles();
-    const [tags, setTags] = useState(userTags || defaultTags);
+    const classes = useStyles()
+    const [tags, setTags] = useState(userTags || defaultTags)
     const selectTag = i => {
-        tags[i].selected = !tags[i].selected;
-        setTags([...tags]);
-    };
+        tags[i].selected = !tags[i].selected
+        setTags([...tags])
+    }
 
     return (
         <div className={classes.root}>
@@ -33,5 +33,5 @@ export default function Tags({ tags: userTags, canAdd = false }) {
             ))}
             {canAdd && <DottedChip />}
         </div>
-    );
+    )
 }

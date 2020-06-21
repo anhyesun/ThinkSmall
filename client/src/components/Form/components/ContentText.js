@@ -1,11 +1,11 @@
-import DialogContentText from '@material-ui/core/DialogContentText';
-import { withStyles } from '@material-ui/core/styles';
+import DialogContentText from '@material-ui/core/DialogContentText'
+import { withStyles } from '@material-ui/core/styles'
 
 const ContentText = withStyles({
     root: {
         fontFamily: '\'Baloo 2\', cursive',
         fontSize: 14,
     },
-})(DialogContentText);
+})(DialogContentText)
 
-export default ContentText;
+export default ContentText

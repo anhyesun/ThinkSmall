@@ -1,3 +1,3 @@
-import { defaultUsers } from '../constant';
+import { defaultUsers } from '../constant'
 
-export default (users = defaultUsers, action) => users;
+export default (users = defaultUsers, action) => users
