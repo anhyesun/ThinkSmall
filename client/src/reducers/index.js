@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux'
-import businesses from './businesses'
-import volunteers from './volunteers'
-import conversation from './conversation'
-import conversations from './conversations'
-import forms from './forms'
-import requests from './requests'
-import switchState from './switchState'
-import users from './users'
+import businesses from './routers/businesses'
+import volunteers from './routers/volunteers'
+import conversations from './routers/conversations'
+import users from './routers/users'
+import {
+    keyword, conversation, forms, requests, switchState,
+} from './routers/misc'
 
 export default combineReducers({
     businesses,
@@ -14,6 +13,7 @@ export default combineReducers({
     conversation,
     conversations,
     forms,
+    keyword,
     requests,
     switchState,
     users,

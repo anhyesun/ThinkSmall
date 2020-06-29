@@ -11,6 +11,7 @@ export const SAVE_REQUEST = 'SAVE_REQUEST'
 export const OPEN_FORM = 'OPEN_FORM'
 export const CLOSE_FORM = 'CLOSE_FORM'
 export const TOGGLE_HELP = 'TOGGLE_HELP'
+export const SET_KEYWORD = 'SET_KEYWORD'
 
 export const push = (uid, iid, message) => ({
     type: PUSH_MESSAGE,
@@ -92,3 +93,10 @@ export const closeForm = id => ({
     type: CLOSE_FORM,
     id,
 })
+
+export const setKeyword = keyword => ({
+    type: SET_KEYWORD,
+    keyword,
+})
+
+export const clearKeyword = () => setKeyword('')

@@ -1,26 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Pagination, PaginationItem } from '@material-ui/lab'
 import Tags from './Tags/Tags'
 import Search from './Search'
 import BusinessCard from './BusinessCard'
+import { clearKeyword as clear } from '../actions'
 import classes from '../modules/list.module.css'
 
-const BusinessesList = ({ businesses }) => {
-    const SearchBar = () => (
-        <div className={classes.searchBar}>
-            <Search />
-            <Tags />
-        </div>
-    )
+const BusinessesList = ({ businesses, keyword, clear }) => {
     const [currentPage, setPage] = useState(1)
     const handleChange = (_, currentPage) => {
         setPage(currentPage)
     }
+    useEffect(() => {
+        clear()
+    }, [])
 
     return (
         <div className={classes.root}>
-            <SearchBar />
+            <div className={classes.searchBar}>
+                <Search />
+                <Tags />
+            </div>
             <div className={classes.page}>
                 <Pagination
                     onChange={handleChange}
@@ -33,6 +34,7 @@ const BusinessesList = ({ businesses }) => {
             </div>
             <div className={classes.container}>
                 {businesses && businesses
+                    .filter(({ storeName }) => storeName.includes(keyword))
                     .slice((currentPage - 1) * 6, currentPage * 6)
                     .map(({ id, ...props }) => (
                         <BusinessCard key={id} id={id} {...props} />
@@ -42,6 +44,6 @@ const BusinessesList = ({ businesses }) => {
     )
 }
 
-const mapStateToProps = ({ businesses }) => ({ businesses })
+const mapStateToProps = ({ businesses, keyword }) => ({ businesses, keyword })
 
-export default connect(mapStateToProps)(BusinessesList)
+export default connect(mapStateToProps, { clear })(BusinessesList)

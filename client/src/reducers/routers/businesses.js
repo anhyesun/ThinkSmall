@@ -1,7 +1,7 @@
 import {
     ADD_BUSINESS, DELETE_BUSINESS, EDIT_BUSINESS, TOGGLE_HELP,
-} from '../actions'
-import { defaultBusinesses } from '../constant'
+} from '../../actions'
+import { defaultBusinesses } from '../../constant'
 
 const businessFields = 7
 

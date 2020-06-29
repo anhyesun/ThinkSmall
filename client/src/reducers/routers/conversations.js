@@ -1,6 +1,6 @@
-import { PUSH_MESSAGE } from '../actions'
-import { defaultConversations } from '../constant'
-import { now } from './helper'
+import { PUSH_MESSAGE } from '../../actions'
+import { defaultConversations } from '../../constant'
+import { now } from '../helper'
 
 export default (conversations = defaultConversations, action) => {
     switch (action.type) {

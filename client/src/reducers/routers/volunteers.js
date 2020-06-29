@@ -1,5 +1,5 @@
-import { ADD_VOLUNTEER, DELETE_VOLUNTEER, EDIT_VOLUNTEER } from '../actions'
-import { defaultVolunteers } from '../constant'
+import { ADD_VOLUNTEER, DELETE_VOLUNTEER, EDIT_VOLUNTEER } from '../../actions'
+import { defaultVolunteers } from '../../constant'
 
 const volunteerFields = 4
 
