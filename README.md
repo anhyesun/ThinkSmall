@@ -34,7 +34,6 @@ c) Stretch requirements:
 ## Minimal Requirement Break Down
 
 - Have the ability to list small businesses requiring help by list view 
-	- Get a list of small businesses from external API (Yelp API)
 	- Render it as a list view
   - Sort it alphabetically
   
