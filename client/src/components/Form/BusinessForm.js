@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core'
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import ImageUploader from 'react-images-upload'
+import S3 from 'react-aws-s3'
 import {
     Actions,
     Content, ContentText, Text,
@@ -17,12 +18,21 @@ import {
 import { addBusiness, closeForm } from '../../actions'
 import classes from '../../modules/form.module.css'
 
+const config = {
+    bucketName: 'thinksmall',
+    region: 'ca-central-1',
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+}
+
+const Client = new S3(config)
+
 const Form = ({ open = false, closeForm, addBusiness }) => {
     const [location, setLocation] = useState('')
     const [storeName, setStoreName] = useState('')
-    const [avatar, setAvatar] = useState()
     const [description, setDescription] = useState('')
     const [tags, setTags] = useState([])
+    const [file, setFile] = useState()
     const theme = useTheme()
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
@@ -36,13 +46,13 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
 
     const onClose = () => {
         setStoreName('')
-        setAvatar('')
         setLocation('')
         setDescription('')
         closeForm('business')
     }
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
+        const avatar = await onSave(file)
         const business = {
             storeName,
             avatar,
@@ -58,8 +68,17 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
 
     const onDrop = files => {
         const reader = new FileReader()
-        reader.onload = e => setAvatar(e.target.result)
         reader.readAsDataURL(files[0])
+        setFile(files[0])
+    }
+
+    async function onSave(file) {
+        try {
+            const res = await Client.uploadFile(file)
+            return res.location
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
