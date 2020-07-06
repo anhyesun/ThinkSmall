@@ -1,11 +1,21 @@
 import {
-    SET_KEYWORD,
-    SET_CONVERSATION,
     OPEN_FORM, CLOSE_FORM,
     SAVE_REQUEST,
+    SET_CONVERSATION,
+    SET_FILTERS,
+    SET_KEYWORD,
     SWITCH_VIEW,
 } from '../../actions'
 import { defaultRequests } from '../../constant'
+
+export const filters = (filters = [], action) => {
+    switch (action.type) {
+    case SET_FILTERS:
+        return [...action.tags]
+    default:
+        return filters
+    }
+}
 
 export const keyword = (keyword = '', action) => {
     switch (action.type) {

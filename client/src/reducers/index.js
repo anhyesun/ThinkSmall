@@ -4,17 +4,18 @@ import volunteers from './routers/volunteers'
 import conversations from './routers/conversations'
 import users from './routers/users'
 import {
-    keyword, conversation, forms, requests, switchState,
+    keyword, conversation, forms, requests, switchState, filters,
 } from './routers/misc'
 
 export default combineReducers({
     businesses,
-    volunteers,
     conversation,
     conversations,
+    filters,
     forms,
     keyword,
     requests,
     switchState,
     users,
+    volunteers,
 })

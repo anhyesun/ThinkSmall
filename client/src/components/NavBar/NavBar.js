@@ -6,7 +6,6 @@ import {
     Toolbar,
     useMediaQuery,
 } from '@material-ui/core'
-import { StylesProvider } from '@material-ui/core/styles'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { ButtonNavBar, Logo, Text } from './components'
@@ -40,7 +39,7 @@ function NavBar({ userType, handleOpen }) {
         </>
     )
     return (
-        <StylesProvider injectFirst>
+        <>
             <AppBar position="static" color="transparent" className={classes.root}>
                 <Toolbar>
                     <Logo edge="start" variant="h5" className={classes.logo}>ThinkSmall</Logo>
@@ -73,7 +72,7 @@ function NavBar({ userType, handleOpen }) {
                     <Switch />
                 )}
             </Drawer>
-        </StylesProvider>
+        </>
     )
 }
 

@@ -33,13 +33,14 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
     const [description, setDescription] = useState('')
     const [tags, setTags] = useState([])
     const [file, setFile] = useState()
+    const [geolocation, setGeolocation] = useState()
     const theme = useTheme()
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
     const onSelect = location => {
         geocodeByAddress(location)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
+            .then(latLng => setGeolocation(latLng))
             .then(() => setLocation(location))
             .catch(error => console.error('Error', error))
     }
@@ -58,6 +59,7 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
             avatar,
             storeOwner: 'Dummy Name',
             location,
+            ...geolocation,
             description,
             needsHelp: true,
             tags,
@@ -73,11 +75,13 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
     }
 
     async function onSave(file) {
-        try {
-            const res = await Client.uploadFile(file)
-            return res.location
-        } catch (err) {
-            console.log(err)
+        if (file) {
+            try {
+                const res = await Client.uploadFile(file)
+                return res.location
+            } catch (err) {
+                console.log(err)
+            }
         }
     }
 

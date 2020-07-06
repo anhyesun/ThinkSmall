@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles'
 const DottedChip = withStyles({
     root: {
         border: '1px dashed rgba(0, 0, 0, 0.23)',
-        background: '#fafafa',
         fontFamily: '\'Baloo 2\', cursive',
     },
 })(Chip)

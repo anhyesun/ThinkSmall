@@ -29,14 +29,14 @@ const Form = ({ open = false, closeForm, saveRequest }) => {
     }
 
     const onSubmit = e => {
-        saveRequest({ details, tags })
+        saveRequest({ business, details, tags })
         onClose()
     }
 
     // TODO: replace with actual list of businesses owned by the authenticated business owner
     const businesses = [
         { storeName: 'Hunter & Hare' },
-        { storeName: 'Sushi California' },
+        { storeName: 'Tenth and Proper' },
     ]
 
     return (

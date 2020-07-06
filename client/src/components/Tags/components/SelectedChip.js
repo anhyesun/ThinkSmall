@@ -5,19 +5,19 @@ import classes from '../../../modules/tags.module.css'
 
 const SelectedChip = withStyles({
     root: {
-        color: '#fafafa',
-        background: 'salmon',
+        color: 'white',
+        background: '#6C7A89',
         borderColor: 'transparent',
         fontFamily: '\'Baloo 2\', cursive',
         '&:hover, &:focus': {
-            color: '#fafafa!important',
-            background: 'salmon!important',
+            color: 'white!important',
+            background: '#6C7A89!important',
             borderColor: 'transparent!important',
         },
     },
     clickableColorPrimary: {
-        color: '#fafafa',
-        background: 'salmon',
+        color: 'white',
+        background: '#6C7A89',
         borderColor: 'transparent',
     },
 })(Chip)
