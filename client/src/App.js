@@ -28,6 +28,7 @@ import BusinessesList from './components/List/BusinessesList'
 import VolunteersList from './components/List/VolunteersList'
 import NavBar from './components/NavBar/NavBar'
 import Maps from './components/Maps'
+import LoginByGoogle from './components/LoginByGoogle'
 import './App.css'
 
 library.add(
@@ -64,6 +65,7 @@ function App({ switchState }) {
                     </Route>
                     <Route path="*">
                         <NavBar />
+                        <LoginByGoogle />
                         <Home />
                     </Route>
                 </Switch>
