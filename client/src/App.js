@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,17 +18,20 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { StylesProvider } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 import Home from './components/Home'
 import BusinessForm from './components/Form/BusinessForm'
 import RequestForm from './components/Form/RequestForm'
 import VolunteerForm from './components/Form/VolunteerForm'
+import SignupForm from './components/Form/SignupForm'
+import LoginForm from './components/Form/LoginForm'
 import Inbox from './components/Inbox/Inbox'
 import BusinessesList from './components/List/BusinessesList'
 import VolunteersList from './components/List/VolunteersList'
 import NavBar from './components/NavBar/NavBar'
+import './App.css'
 import Maps from './components/Maps'
 import LoginByGoogle from './components/LoginByGoogle'
-import './App.css'
 
 library.add(
     fab,
@@ -64,9 +66,10 @@ function App({ switchState }) {
                         <Inbox />
                     </Route>
                     <Route path="*">
-                        <NavBar />
-                        <LoginByGoogle />
+                        <NavBar userType="entry" />
                         <Home />
+                        <SignupForm />
+                        <LoginForm />
                     </Route>
                 </Switch>
             </Router>

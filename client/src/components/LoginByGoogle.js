@@ -17,16 +17,7 @@ const LoginByGoogle = () => {
             {!isUserLoggedIn && (
                 <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_KEY}
-                    render={renderProps => (
-                        <button
-                            type="button"
-                            className="button"
-                            onClick={renderProps.onClick}
-                            disabled={renderProps.disabled}
-                        >
-                            Log in with Google
-                        </button>
-                    )}
+                    buttonText="Login"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                 />
@@ -35,15 +26,7 @@ const LoginByGoogle = () => {
                 <div className="userDetails-wrapper">
                     <div className="details-wrapper">
                         <GoogleLogout
-                            render={renderProps => (
-                                <button
-                                    type="button"
-                                    className="logout-button"
-                                    onClick={renderProps.onClick}
-                                >
-                                    Log Out
-                                </button>
-                            )}
+                            buttonText="Logout"
                             onLogoutSuccess={logout}
                         />
                         <div className="image">

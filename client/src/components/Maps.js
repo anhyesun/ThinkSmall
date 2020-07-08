@@ -85,5 +85,5 @@ function Maps({ loading, businesses }) {
 
 export default connect(({ businesses }) => ({
     loading: businesses.loading,
-    businesses: businesses.data
+    businesses: businesses.data,
 }), { getBusinesses })(Maps)
