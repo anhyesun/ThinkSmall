@@ -29,6 +29,10 @@
     border-bottom: 1px solid;
 }
 
+.switch {
+    margin: 10px auto 10px 10px;
+}
+
 .toggle {
     background: #343434;
     border-radius: 15px;
@@ -73,5 +77,9 @@
 
     .logo {
         font-size: 1.25rem;
+    }
+
+    .switch {
+        margin: 10px auto;
     }
 }

@@ -53,15 +53,14 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
     }
 
     const onSubmit = async e => {
-        const avatar = await onSave(file)
+        const imageUrl = await onSave(file)
         const business = {
             storeName,
-            avatar,
+            imageUrl,
             storeOwner: 'Dummy Name',
             location,
             ...geolocation,
             description,
-            needsHelp: true,
             tags,
         }
         addBusiness(business)
@@ -110,7 +109,7 @@ const Form = ({ open = false, closeForm, addBusiness }) => {
                 <ImageUploader
                     buttonText="Choose images"
                     onChange={onDrop}
-                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                    imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif']}
                     maxFileSize={5242880}
                     singleImage
                     withIcon

@@ -1,12 +1,10 @@
 import {
     OPEN_FORM, CLOSE_FORM,
-    SAVE_REQUEST,
     SET_CONVERSATION,
     SET_FILTERS,
     SET_KEYWORD,
     SWITCH_VIEW,
 } from '../../actions'
-import { defaultRequests } from '../../constant'
 
 export const filters = (filters = [], action) => {
     switch (action.type) {
@@ -43,15 +41,6 @@ export const forms = (forms = {}, action) => {
         return { ...forms, [action.id]: false }
     default:
         return forms
-    }
-}
-
-export const requests = (requests = defaultRequests, action) => {
-    switch (action.type) {
-    case SAVE_REQUEST:
-        return [...requests, action.request]
-    default:
-        return requests
     }
 }
 

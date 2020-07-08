@@ -1,29 +1,29 @@
-import { LOAD_USERS, SET_USERS } from '../../actions'
+import { LOAD_REQUESTS, SET_REQUESTS } from '../../actions'
 
-const defaultUsers = {
+const defaultRequests = {
     loading: true,
     loaded: false,
     data: [],
 }
 
-export default (users = defaultUsers, action) => {
+export default (requests = defaultRequests, action) => {
     switch (action.type) {
-    case LOAD_USERS: {
+    case LOAD_REQUESTS: {
         return {
-            ...users,
+            ...requests,
             loading: true,
             loaded: false,
         }
     }
-    case SET_USERS: {
+    case SET_REQUESTS: {
         return {
-            ...users,
+            ...requests,
             loading: false,
             loaded: true,
             data: action.data,
         }
     }
     default:
-        return users
+        return requests
     }
 }

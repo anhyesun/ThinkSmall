@@ -16,17 +16,17 @@ const Text = withStyles({
 })(Typography)
 
 const VolunteerCard = ({
-    avatar, volunteerName, description, tags,
+    imageUrl, givenName, familyName, description, tags,
 }) => (
     <Card className={classes.root}>
         <CardMedia
             className={classes.media}
-            image={avatar}
+            image={imageUrl}
             title="Volunteer Picture"
         />
         <CardContent>
             <Text variant="h5" component="h6">
-                {volunteerName}
+                {`${givenName} ${familyName}`}
             </Text>
             <Tags tags={tags} />
             <Text gutterBottom variant="body2" color="textSecondary" component="p">

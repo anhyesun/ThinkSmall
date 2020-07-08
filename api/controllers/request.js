@@ -79,8 +79,6 @@ getRequestById = async (req, res) => {
             return res.status(400).json({ success: false, error: err })
         }
 
-        console.log(request)
-
         if (!request) {
             return res.status(404).json({ success: false, error: `Request not found` })
         }

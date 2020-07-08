@@ -1,14 +1,30 @@
 import {
-    ADD_BUSINESS, DELETE_BUSINESS, EDIT_BUSINESS, TOGGLE_HELP,
+    DELETE_BUSINESS, EDIT_BUSINESS, TOGGLE_HELP, SET_BUSINESSES, LOAD_BUSINESSES,
 } from '../../actions'
-import { defaultBusinesses } from '../../constant'
 
+const defaultBusinesses = {
+    loading: true,
+    loaded: false,
+    data: [],
+}
 const businessFields = 7
 
 export default (businesses = defaultBusinesses, action) => {
     switch (action.type) {
-    case ADD_BUSINESS: {
-        return [...businesses, { ...action.business, id: businesses.length }]
+    case LOAD_BUSINESSES: {
+        return {
+            ...businesses,
+            loading: true,
+            loaded: false,
+        }
+    }
+    case SET_BUSINESSES: {
+        return {
+            ...businesses,
+            loading: false,
+            loaded: true,
+            data: action.data,
+        }
     }
     case DELETE_BUSINESS: {
         return [...businesses.filter(({ id }) => id !== action.id)]
@@ -22,11 +38,11 @@ export default (businesses = defaultBusinesses, action) => {
     case EDIT_BUSINESS: {
         const editedBusinesses = [...businesses]
         const {
-            id, storeName, avatar, storeOwner, location, description,
+            id, storeName, imageUrl, storeOwner, location, description,
             needsHelp, tags,
         } = action
         const properties = [storeName,
-            avatar,
+            imageUrl,
             storeOwner,
             location,
             description,

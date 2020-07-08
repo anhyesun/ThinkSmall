@@ -79,8 +79,6 @@ getTagById = async (req, res) => {
             return res.status(400).json({ success: false, error: err })
         }
 
-        console.log(tag)
-
         if (!tag) {
             return res.status(404).json({ success: false, error: `Tag not found` })
         }

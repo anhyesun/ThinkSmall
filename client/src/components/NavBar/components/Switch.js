@@ -15,7 +15,7 @@ function SmallSwitch({ switchState, toggleSwitch }) {
         toggleSwitch()
     }
     return (
-        <div style={{ margin: '10px auto' }}>
+        <div className={classes.switch}>
             <Grid component="label" container alignItems="center" spacing={1}>
                 <Grid item><Icon icon="list" /></Grid>
                 <Grid item style={{ display: 'flex' }}>
