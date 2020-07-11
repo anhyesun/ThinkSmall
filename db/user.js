@@ -1,5 +1,35 @@
 db.users.insertMany([
     {
+        _id: ObjectId('5f096e4503e94054e758ade4'),
+        givenName: 'Georgia',
+        familyName: 'Lauren',
+        email: 'gl@mail.io',
+        phone: '(778)778-7788',
+        imageUrl: 'https://images.unsplash.com/photo-1520466809213-7b9a56adcd45?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+        description: 'I\'m a developer.',
+        tags: [{ label: 'Developer' }],
+        available: true
+    }, {
+        _id: ObjectId('5f096e0103e94054e758ade3'),
+        givenName: 'Brooke',
+        familyName: 'Cagel',
+        email: 'bc@mail.io',
+        phone: '(778)778-7788',
+        imageUrl: 'https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+        description: 'I\'m a developer.',
+        tags: [{ label: 'Developer' }],
+        available: true
+    }, {
+        _id: ObjectId('5f096db503e94054e758ade2'),
+        givenName: 'Jason',
+        familyName: 'Kang',
+        email: 'jkang@mail.io',
+        phone: '(778)778-7788',
+        imageUrl: 'https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+        description: 'I\'m a developer.',
+        tags: [{ label: 'Developer' }],
+        available: true
+    }, {
         _id: ObjectId('5f09696baa615c5132595686'),
         givenName: 'Yuree',
         familyName: 'Jang',
@@ -8,7 +38,7 @@ db.users.insertMany([
         imageUrl: 'https://images.unsplash.com/photo-1568914935935-cffaf221c304?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80',
         description: 'I\'m a developer.',
         tags: [{ label: 'Developer' }],
-        available: false
+        available: true
     }, {
         _id: ObjectId('5f0968f3aa615c5132595685'),
         givenName: 'John',
@@ -44,8 +74,9 @@ db.users.insertMany([
         givenName: 'John',
         familyName: 'Doe',
         email: 'jdoe@mail.io',
-        imageUrl: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+        imageUrl: 'https://images.unsplash.com/photo-1459356979461-dae1b8dcb702?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
         description: 'Hi! I run a small business in Vancouver. Looking forward to meeting you all!',
+        available: true
     }, {
         _id: ObjectId('5f0932a99eeb33d77955d15c'),
         givenName: 'Jane',
