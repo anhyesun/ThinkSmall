@@ -1,15 +1,11 @@
 import {
     DELETE_BUSINESS, EDIT_BUSINESS, TOGGLE_HELP, SET_BUSINESSES, LOAD_BUSINESSES,
 } from '../../actions'
+import { defaultState } from './misc'
 
-const defaultBusinesses = {
-    loading: true,
-    loaded: false,
-    data: [],
-}
 const businessFields = 7
 
-export default (businesses = defaultBusinesses, action) => {
+export default (businesses = defaultState, action) => {
     switch (action.type) {
     case LOAD_BUSINESSES: {
         return {

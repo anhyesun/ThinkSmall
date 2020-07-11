@@ -1,12 +1,7 @@
 import { LOAD_REQUESTS, SET_REQUESTS } from '../../actions'
+import { defaultState } from './misc'
 
-const defaultRequests = {
-    loading: true,
-    loaded: false,
-    data: [],
-}
-
-export default (requests = defaultRequests, action) => {
+export default (requests = defaultState, action) => {
     switch (action.type) {
     case LOAD_REQUESTS: {
         return {

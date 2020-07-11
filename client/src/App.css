@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@400;600;800&family=PT+Serif+Caption&family=Roboto+Slab:wght@300&family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@400;600;800&family=Roboto+Slab:wght@300&family=Poppins:wght@200;400;600&family=Shrikhand&display=swap');
 body {
   font-family: 'Baloo 2', cursive;
 }
 
 h1, h3 {
-  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
 }
 
 a {

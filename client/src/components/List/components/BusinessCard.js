@@ -27,6 +27,7 @@ const BusinessCard = ({
     location, requests, tags = [],
 }) => {
     const [details, setDetails] = useState()
+    const [shorten, setShorten] = useState(true)
     const [hover, setHover] = useState(false)
     const requestIcon = useRef(null)
     const getRequest = async id => {
@@ -80,6 +81,7 @@ const BusinessCard = ({
         }
         loadDetails()
     }, [])
+    const toggle = () => setShorten(prev => !prev)
 
     return (
         <Card className={classes.root} style={{ overflow: 'visible' }}>
@@ -96,10 +98,10 @@ const BusinessCard = ({
                 </Text>
                 <Tags tags={tags} />
                 <Text gutterBottom variant="body2" color="textSecondary" component="p">
-                    {shortDescription}
-                    {shortDescription.length < description.length && '...'}
+                    {shorten ? shortDescription : description}
+                    {shorten && shortDescription.length < description.length && '...'}
                 </Text>
-                <a href="#" className={classes.link} style={{ fontSize: 'smaller' }}>Read more</a>
+                <a className={classes.link} onClick={toggle} style={{ fontSize: 'smaller' }}>Read more</a>
                 <Divider light style={{ margin: '10px auto' }} />
                 <div style={{ display: 'flex', alignItems: 'center', fontSize: 'small' }}>
                     <Icon icon="user" size="sm" style={{ margin: 'auto 10px auto 5px' }} />

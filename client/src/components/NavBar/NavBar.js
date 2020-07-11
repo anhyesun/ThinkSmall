@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
     AppBar,
@@ -6,7 +7,7 @@ import {
     Toolbar,
     useMediaQuery,
 } from '@material-ui/core'
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
+import AccountIcon from '@material-ui/icons/AccountCircleOutlined'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { ButtonNavBar, Logo, Text } from './components'
 import classes from '../../modules/nav.module.css'
@@ -19,22 +20,51 @@ const tabs = [
     { to: 'contact', title: 'Contact Us' },
 ]
 
-function NavBar({ userType, handleOpen }) {
+// TODO: Upate these links once notifications and logout functionlity exist
+const dropTabs = [
+    { to: 'account', title: 'Account' },
+    { to: 'notifications', title: 'Notifications' },
+    { to: 'inbox', title: 'Inbox' },
+    { to: 'about', title: 'Logout' },
+]
+
+function NavBar({ signedIn }) {
     const matches = useMediaQuery('(min-width:991.98px)')
     const [open, setOpen] = useState(false)
+    const [drop, setDrop] = useState(false)
+    const accountIcon = useRef(null)
+    const toggleDrop = () => setDrop(prev => !prev)
+    const handleClose = () => setDrop(false)
     const Links = () => (
-        <div className={classes.flex}>
+        <>
             {tabs.map(({ to, title }) => (
                 <Link key={to} to={to} className={classes.link}>{title}</Link>
             ))}
-        </div>
+        </>
     )
+    const DropLinks = () => {
+        const { top, left } = accountIcon?.current?.getBoundingClientRect() || {}
+        return (
+            <div className={classes.drop} style={{ top: top + 30, left, display: drop ? 'block' : 'none' }} onClick={handleClose}>
+                <div className={classes.flex}>
+                    {dropTabs.map(({ to, title }) => (
+                        <Link key={to} to={to} className={classes.link}>{title}</Link>
+                    ))}
+                </div>
+            </div>
+        )
+    }
     const AccountInfo = () => (
         <>
-            <AccountCircleOutlinedIcon />
+            <AccountIcon
+                ref={accountIcon}
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={toggleDrop}
+            />
+            {drop && <DropLinks />}
             <div className={classes.account}>
                 <Text>John Doe</Text>
-                <Text>{`${userType} user`}</Text>
             </div>
         </>
     )
@@ -46,15 +76,10 @@ function NavBar({ userType, handleOpen }) {
                     {matches ? (
                         <>
                             <Links />
-                            {userType && (
-                                <>
-                                    <AccountInfo />
-                                    <ButtonNavBar userType={userType} handleOpen={handleOpen} />
-                                    {userType === 'business' && (
-                                        <Switch />
-                                    )}
-                                </>
-                            )}
+                            {signedIn
+                                ? <AccountInfo />
+                                : <ButtonNavBar userType="entry" />}
+                            <Switch />
                         </>
                     ) : <Icon icon="bars" onClick={() => setOpen(true)} />}
                 </Toolbar>
@@ -68,12 +93,11 @@ function NavBar({ userType, handleOpen }) {
                 }}
             >
                 <Links />
-                {userType === 'business' && (
-                    <Switch />
-                )}
+                <Switch />
+                <AccountInfo />
             </Drawer>
         </>
     )
 }
 
-export default NavBar
+export default connect(({ currentUser }) => ({ signedIn: currentUser.loaded }))(NavBar)

@@ -60,7 +60,7 @@ updateRequest = async (req, res) => {
 }
 
 deleteRequest = async (req, res) => {
-    await Request.findByIdAndDelete(ObjectId(req.params.id), (err, request) => {
+    await Request.findByIdAndDelete(ObjectId(req.params.id), async (err, request) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -68,6 +68,15 @@ deleteRequest = async (req, res) => {
         if (!request) {
             return res.status(404).json({ success: false, error: `Request not found` })
         }
+
+        await User.updateMany({}, {
+            $pull: {
+                $or: {
+                    requests: { _id: ObjectId(req.params.id) },
+                    tasks: { _id: ObjectId(req.params.id) },
+                }
+            }
+        })
 
         return res.status(200).json({ success: true, data: request })
     }).catch(err => console.log(err))

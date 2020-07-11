@@ -17,7 +17,7 @@ const LoginByGoogle = () => {
             {!isUserLoggedIn && (
                 <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_KEY}
-                    buttonText="Login"
+                    buttonText="Sign in with Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                 />

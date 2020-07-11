@@ -111,24 +111,6 @@ export const defaultConversations = [
     },
 ]
 
-export const defaultRequests = [
-    {
-        business: 'Tenth and Proper',
-        details: 'We need a logo for our website!',
-        tags: ['Call for Designers'],
-    },
-    {
-        business: 'Hunter & Hare',
-        details: 'We need a driver to pick up clothes!',
-        tags: ['Call for Drivers'],
-    },
-    {
-        business: 'Hunter & Hare',
-        details: 'We need a logo for our website!',
-        tags: ['Call for Designers'],
-    },
-]
-
 export const defaultTags = [
     { label: 'Call for Designers', selected: false },
     { label: 'Call for Developers', selected: false },

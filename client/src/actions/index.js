@@ -28,11 +28,6 @@ export const switchView = () => ({
     type: SWITCH_VIEW,
 })
 
-export const deleteBusiness = id => ({
-    type: DELETE_BUSINESS,
-    id,
-})
-
 export const helpToggle = id => ({
     type: TOGGLE_HELP,
     id,

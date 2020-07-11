@@ -22,16 +22,15 @@ import { connect } from 'react-redux'
 import Home from './components/Home'
 import BusinessForm from './components/Form/BusinessForm'
 import RequestForm from './components/Form/RequestForm'
-import VolunteerForm from './components/Form/VolunteerForm'
 import SignupForm from './components/Form/SignupForm'
 import LoginForm from './components/Form/LoginForm'
 import Inbox from './components/Inbox/Inbox'
 import BusinessesList from './components/List/BusinessesList'
 import VolunteersList from './components/List/VolunteersList'
 import NavBar from './components/NavBar/NavBar'
-import './App.css'
 import Maps from './components/Maps'
-import LoginByGoogle from './components/LoginByGoogle'
+import './App.css'
+import Account from './components/Account'
 
 library.add(
     fab,
@@ -50,28 +49,18 @@ function App({ switchState }) {
     return (
         <StylesProvider injectFirst>
             <Router>
+                <NavBar />
                 <Switch>
-                    <Route path="/businesses">
-                        <NavBar userType="business" />
-                        {switchState ? <Maps /> : <BusinessesList />}
-                        <BusinessForm />
-                        <RequestForm />
-                    </Route>
-                    <Route path="/volunteers">
-                        <NavBar userType="volunteer" />
-                        <VolunteersList />
-                        <VolunteerForm />
-                    </Route>
-                    <Route path="/inbox">
-                        <Inbox />
-                    </Route>
-                    <Route path="*">
-                        <NavBar userType="entry" />
-                        <Home />
-                        <SignupForm />
-                        <LoginForm />
-                    </Route>
+                    <Route path="/businesses" component={switchState ? Maps : BusinessesList} />
+                    <Route path="/volunteers" component={VolunteersList} />
+                    <Route path="/inbox" component={Inbox} />
+                    <Route path="/account" component={Account} />
+                    <Route path="*" component={Home} />
                 </Switch>
+                <BusinessForm />
+                <RequestForm />
+                <SignupForm />
+                <LoginForm />
             </Router>
         </StylesProvider>
     )

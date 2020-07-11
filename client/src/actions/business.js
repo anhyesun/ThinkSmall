@@ -38,3 +38,14 @@ export function addBusiness(business) {
         }
     }
 }
+
+export function deleteBusiness(id) {
+    return async dispatch => {
+        try {
+            await axios.delete(`http://localhost:8080/business/${id}`)
+            return dispatch(getBusinesses(true))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}

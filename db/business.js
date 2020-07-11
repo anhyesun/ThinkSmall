@@ -1,12 +1,13 @@
 db.businesses.insertMany([
     {
+        _id: ObjectId('5f04a784073af3659c1b0951'),
         storeName: 'Tenth and Proper',
         storeOwner: 'Marion Fudge',
         location: '4483 W 10th Ave, Vancouver',
         lat: 49.264100,
         lng: -123.209000,
         description: 'Tenth & Proper, a unique fashion and lifestyle boutique specializing in beautifully crafted casual wear for women.',
-        requests: [0],
+        requests: ['5f04e72670a68be788efaf60'],
         tags: [{ label: 'Call for Designers' }, { label: 'Clothing' }],
     }, {
         storeName: 'Hunter & Hare',
@@ -16,7 +17,7 @@ db.businesses.insertMany([
         lat: 49.277824,
         lng: -123.098293,
         description: 'Boutique for women\'s clothing & accessories on consignment, plus jewelry, stationery & beauty items.',
-        requests: [1, 2],
+        requests: ['5f04e72670a68be788efaf5e', '5f092f4f6b1b32fa5b5eb2b0'],
         tags: [{ label: 'Call for Logo Design' }, { label: 'Clothing' }],
     }, {
         storeName: 'Kosoo',

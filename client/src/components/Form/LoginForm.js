@@ -2,21 +2,17 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
 import {
     Button,
     Dialog,
     DialogTitle as Title,
-    TextareaAutosize as Textarea,
 } from '@material-ui/core'
 import {
     Actions,
     Content,
-    ContentText,
     Input,
     Text,
 } from './components'
-import Tags from '../Tags/Tags'
 import { closeForm } from '../../actions'
 import LoginByGoogle from '../LoginByGoogle'
 

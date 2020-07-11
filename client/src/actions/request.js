@@ -38,3 +38,14 @@ export function addRequest(request) {
         }
     }
 }
+
+export function deleteRequest(id) {
+    return async dispatch => {
+        try {
+            await axios.delete(`http://localhost:8080/request/${id}`)
+            return dispatch(getRequests(true))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}

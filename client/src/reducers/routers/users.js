@@ -1,12 +1,10 @@
-import { LOAD_USERS, SET_USERS } from '../../actions'
+import {
+    LOAD_USERS, SET_USERS,
+    LOAD_CURRENT_USER, SET_CURRENT_USER,
+} from '../../actions'
+import { defaultState } from './misc'
 
-const defaultUsers = {
-    loading: true,
-    loaded: false,
-    data: [],
-}
-
-export default (users = defaultUsers, action) => {
+export const users = (users = defaultState, action) => {
     switch (action.type) {
     case LOAD_USERS: {
         return {
@@ -25,5 +23,27 @@ export default (users = defaultUsers, action) => {
     }
     default:
         return users
+    }
+}
+
+export const currentUser = (currentUser = defaultState, action) => {
+    switch (action.type) {
+    case LOAD_CURRENT_USER: {
+        return {
+            ...currentUser,
+            loading: true,
+            loaded: false,
+        }
+    }
+    case SET_CURRENT_USER: {
+        return {
+            ...currentUser,
+            loading: false,
+            loaded: true,
+            data: action.data,
+        }
+    }
+    default:
+        return currentUser
     }
 }

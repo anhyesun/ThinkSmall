@@ -1,4 +1,5 @@
 const Business = require('../models/business')
+const User = require('../models/user')
 const ObjectId = require('./helper')
 
 createBusiness = (req, res) => {
@@ -60,14 +61,16 @@ updateBusiness = async (req, res) => {
 }
 
 deleteBusiness = async (req, res) => {
-    await Business.findByIdAndDelete(ObjectId(req.params.id), (err, business) => {
+    await Business.findByIdAndDelete(ObjectId(req.params.id), async (err, business) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
         if (!business) {
-            return res.status(404).json({ success: false, error: `Business not found` })
+            return res.status(404).json({ success: false, error: 'Business not found' })
         }
+
+        await User.updateMany({}, { $pull: { owns: { _id: ObjectId(req.params.id) } } })
 
         return res.status(200).json({ success: true, data: business })
     }).catch(err => console.log(err))
@@ -80,21 +83,21 @@ getBusinessById = async (req, res) => {
         }
 
         if (!business) {
-            return res.status(404).json({ success: false, error: `Business not found` })
+            return res.status(404).json({ success: false, error: 'Business not found' })
         }
         return res.status(200).json({ success: true, data: business })
     }).catch(err => console.log(err))
 }
 
-getBusinesss = async (req, res) => {
-    await Business.find({}, (err, businesss) => {
+getBusinesses = async (req, res) => {
+    await Business.find({}, (err, businesses) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!businesss.length) {
-            return res.status(404).json({ success: false, error: `Business not found` })
+        if (!businesses.length) {
+            return res.status(404).json({ success: false, error: 'Business not found' })
         }
-        return res.status(200).json({ success: true, data: businesss })
+        return res.status(200).json({ success: true, data: businesses })
     }).catch(err => console.log(err))
 }
 
@@ -102,6 +105,6 @@ module.exports = {
     createBusiness,
     updateBusiness,
     deleteBusiness,
-    getBusinesss,
+    getBusinesses,
     getBusinessById,
 }

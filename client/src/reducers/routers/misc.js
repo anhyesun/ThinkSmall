@@ -6,6 +6,12 @@ import {
     SWITCH_VIEW,
 } from '../../actions'
 
+export const defaultState = {
+    loading: true,
+    loaded: false,
+    data: [],
+}
+
 export const filters = (filters = [], action) => {
     switch (action.type) {
     case SET_FILTERS:
