@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  h1= user.givenName
+  p Welcome back, #{user.givenName} #{user.familyName}!
+  img.image(src='#{user.imageUrl}', width='200')
