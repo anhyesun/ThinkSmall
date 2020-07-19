@@ -8,16 +8,13 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import reducers from './reducers'
 
-const enhancers = [
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-]
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 ReactDOM.render(
     <Provider
         store={createStore(
             reducers,
-            compose(...enhancers),
+            composeEnhancers(applyMiddleware(thunk)),
         )}
     >
         <App />
