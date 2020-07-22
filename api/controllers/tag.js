@@ -34,7 +34,7 @@ createTag = (req, res) => {
         })
 }
 
-updateTag = async (req, res) => {
+updateTag = (req, res) => {
     const tag = req.body
 
     if (!tag) {
@@ -44,7 +44,7 @@ updateTag = async (req, res) => {
         })
     }
 
-    await Tag.findByIdAndUpdate(ObjectId(req.params.id), tag, (err, tag) => {
+    Tag.findByIdAndUpdate(ObjectId(req.params.id), tag, (err, tag) => {
         if (!tag) {
             return res.status(404).json({
                 err,
@@ -59,8 +59,8 @@ updateTag = async (req, res) => {
     })
 }
 
-deleteTag = async (req, res) => {
-    await Tag.findByIdAndDelete(ObjectId(req.params.id), (err, tag) => {
+deleteTag = (req, res) => {
+    Tag.findByIdAndDelete(ObjectId(req.params.id), (err, tag) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -73,8 +73,8 @@ deleteTag = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getTagById = async (req, res) => {
-    await Tag.findById(ObjectId(req.params.id), (err, tag) => {
+getTagById = (req, res) => {
+    Tag.findById(ObjectId(req.params.id), (err, tag) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -86,8 +86,8 @@ getTagById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getTags = async (req, res) => {
-    await Tag.find({}, (err, tags) => {
+getTags = (req, res) => {
+    Tag.find({}, (err, tags) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

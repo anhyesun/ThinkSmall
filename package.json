@@ -9,9 +9,7 @@
     "start": "cd api && yarn start",
     "install": "cd api && yarn",
     "heroku-postbuild": "cd client && yarn && yarn build",
-    "dev": "run-p dev:*",
-    "dev:client": "cd client && yarn start",
-    "dev:server": "cd api && yarn dev"
+    "dev": "cd api && yarn dev"
   },
   "dependencies": {
     "no-package-lock": "0.0.1",

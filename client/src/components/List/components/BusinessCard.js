@@ -32,7 +32,10 @@ const BusinessCard = ({
     const requestIcon = useRef(null)
     const getRequest = async id => {
         try {
-            const res = await axios.get(`http://localhost:8080/request/${id}`)
+            const baseUrl = process.env.NODE_ENV === 'production'
+                ? process.env.REACT_APP_PRODUCTION_URL
+                : process.env.REACT_APP_DEVELOPMENT_URL
+            const res = await axios.get(`${baseUrl}/request/${id}`)
             return res.data.data
         } catch (err) {
             console.log(err)

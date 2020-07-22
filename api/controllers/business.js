@@ -20,11 +20,12 @@ createBusiness = (req, res) => {
 
     business
         .save()
-        .then(() => {
+        .then(business => {
             return res.status(201).json({
                 success: true,
                 id: business._id,
                 message: 'Business created!',
+                business,
             })
         })
         .catch(error => {
@@ -35,7 +36,7 @@ createBusiness = (req, res) => {
         })
 }
 
-updateBusiness = async (req, res) => {
+updateBusiness = (req, res) => {
     const business = req.body
 
     if (!business) {
@@ -45,7 +46,7 @@ updateBusiness = async (req, res) => {
         })
     }
 
-    await Business.findByIdAndUpdate(ObjectId(req.params.id), business, (err, business) => {
+    Business.findByIdAndUpdate(ObjectId(req.params.id), business, (err, business) => {
         if (!business) {
             return res.status(404).json({
                 err,
@@ -60,8 +61,8 @@ updateBusiness = async (req, res) => {
     })
 }
 
-deleteBusiness = async (req, res) => {
-    await Business.findByIdAndDelete(ObjectId(req.params.id), async (err, business) => {
+deleteBusiness = (req, res) => {
+    Business.findByIdAndDelete(ObjectId(req.params.id), async (err, business) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -76,8 +77,8 @@ deleteBusiness = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getBusinessById = async (req, res) => {
-    await Business.findById(ObjectId(req.params.id), (err, business) => {
+getBusinessById = (req, res) => {
+    Business.findById(ObjectId(req.params.id), (err, business) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -89,8 +90,8 @@ getBusinessById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getBusinesses = async (req, res) => {
-    await Business.find({}, (err, businesses) => {
+getBusinesses = (req, res) => {
+    Business.find({}, (err, businesses) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

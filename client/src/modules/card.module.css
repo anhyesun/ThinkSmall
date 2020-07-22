@@ -87,3 +87,12 @@
     box-shadow: none;
     border: 1em black;
 }
+
+.profile {
+    border: 1.5px solid grey;
+    border-radius: 5px;
+    box-shadow: none;
+    color: black;
+    transition-duration: 0.3s;
+    text-align: center;
+}

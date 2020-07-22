@@ -21,13 +21,13 @@ const Home = () => (
         <Square
             title="Business Owner"
             subtitle="We need a nice logo for our website!"
-            to="/businesses"
+            to="/business"
             src="https://images.unsplash.com/photo-1464869372688-a93d806be852?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
         />
         <Square
             title="Volunteer"
             subtitle="Looking to get involved in the community!"
-            to="/volunteers"
+            to="/volunteer"
             src="https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
         />
     </div>

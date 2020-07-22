@@ -16,7 +16,9 @@ import Tags from '../Tags/Tags'
 import classes from '../../modules/form.module.css'
 import { addRequest, closeForm } from '../../actions'
 
-const Form = ({ open = false, closeForm, addRequest }) => {
+const Form = ({
+    open = false, closeForm, addRequest, owns = [],
+}) => {
     const [business, setBusiness] = useState('')
     const [details, setDetails] = useState('')
     const [tags, setTags] = useState([])
@@ -33,12 +35,6 @@ const Form = ({ open = false, closeForm, addRequest }) => {
         onClose()
     }
 
-    // TODO: replace with actual list of businesses owned by the authenticated business owner
-    const businesses = [
-        { storeName: 'Hunter & Hare' },
-        { storeName: 'Tenth and Proper' },
-    ]
-
     return (
         <Dialog
             fullScreen={fullScreen}
@@ -53,7 +49,7 @@ const Form = ({ open = false, closeForm, addRequest }) => {
                 </ContentText>
                 <Text>Which business of yours do you need help with?</Text>
                 <Select variant="outlined" defaultValue="" value={business} onChange={e => setBusiness(e.target.value)}>
-                    {businesses.map(({ storeName }, i) => (
+                    {owns.map(({ storeName }, i) => (
                         <MenuItem key={i} value={storeName} dense>
                             {storeName}
                         </MenuItem>
@@ -77,6 +73,6 @@ const Form = ({ open = false, closeForm, addRequest }) => {
     )
 }
 
-const mapStateToProps = ({ forms }) => ({ open: forms.request })
+const mapStateToProps = ({ forms, currentUser }) => ({ open: forms.request, ...currentUser.data })
 
 export default connect(mapStateToProps, { addRequest, closeForm })(Form)

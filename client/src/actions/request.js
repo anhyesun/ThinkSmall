@@ -1,7 +1,12 @@
-import axios from 'axios'
+import Axios from 'axios'
+import { getCurrentUser, updateUser } from './user'
 
 export const LOAD_REQUESTS = 'LOAD_REQUESTS'
 export const SET_REQUESTS = 'SET_REQUESTS'
+
+const axios = Axios.create({
+    baseURL: process.env.REACT_APP_WEBSITE_URL,
+})
 
 const loadRequests = () => ({
     type: LOAD_REQUESTS,
@@ -20,7 +25,7 @@ export function getRequests(force = false) {
         dispatch(loadRequests())
 
         try {
-            const res = await axios.get('http://localhost:8080/requests')
+            const res = await axios.get('/requests')
             return dispatch(setRequests(res.data.data))
         } catch (err) {
             console.log(err)
@@ -29,10 +34,13 @@ export function getRequests(force = false) {
 }
 
 export function addRequest(request) {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const { currentUser } = getState()
         try {
-            await axios.post('http://localhost:8080/request', request)
-            return dispatch(getRequests(true))
+            const res = await axios.post('/request', request)
+            dispatch(getRequests(true))
+            dispatch(updateUser(currentUser.data._id, { $push: { requests: res.data.request } }))
+            dispatch(getCurrentUser())
         } catch (err) {
             console.log(err)
         }
@@ -42,8 +50,9 @@ export function addRequest(request) {
 export function deleteRequest(id) {
     return async dispatch => {
         try {
-            await axios.delete(`http://localhost:8080/request/${id}`)
-            return dispatch(getRequests(true))
+            await axios.delete(`/request/${id}`)
+            dispatch(getRequests(true))
+            dispatch(getCurrentUser())
         } catch (err) {
             console.log(err)
         }

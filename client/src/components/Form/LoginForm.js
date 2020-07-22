@@ -14,7 +14,7 @@ import {
     Text,
 } from './components'
 import { closeForm } from '../../actions'
-import LoginByGoogle from '../LoginByGoogle'
+import classes from '../../modules/form.module.css'
 
 const LoginForm = ({ open = false, closeForm }) => {
     const [password, setPassword] = useState('')
@@ -55,11 +55,16 @@ const LoginForm = ({ open = false, closeForm }) => {
 
                     </Actions>
 
-                    <hr />
+                    <p style={{ textAlign: 'center' }}>or</p>
 
-                    <LoginByGoogle />
-
-                    <br />
+                    <div style={{ width: 'fit-content', margin: ' 0 auto 50px' }}>
+                        <a href="/auth/google">
+                            <Button className={classes.google}>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1004px-Google_%22G%22_Logo.svg.png" width={18} height={18} />
+                                Sign in with Google
+                            </Button>
+                        </a>
+                    </div>
 
                 </form>
             </Content>

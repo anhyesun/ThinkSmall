@@ -34,7 +34,7 @@ createUser = (req, res) => {
         })
 }
 
-updateUser = async (req, res) => {
+updateUser = (req, res) => {
     const user = req.body
 
     if (!user) {
@@ -44,7 +44,7 @@ updateUser = async (req, res) => {
         })
     }
 
-    await User.findByIdAndUpdate(ObjectId(req.params.id), user, (err, user) => {
+    User.findByIdAndUpdate(ObjectId(req.params.id), user, (err, user) => {
         if (!user) {
             return res.status(404).json({
                 err,
@@ -59,8 +59,8 @@ updateUser = async (req, res) => {
     })
 }
 
-deleteUser = async (req, res) => {
-    await User.findByIdAndDelete(ObjectId(req.params.id), (err, user) => {
+deleteUser = (req, res) => {
+    User.findByIdAndDelete(ObjectId(req.params.id), (err, user) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -73,8 +73,8 @@ deleteUser = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getUserById = async (req, res) => {
-    await User.findById(ObjectId(req.params.id), (err, user) => {
+getUserById = (req, res) => {
+    User.findById(ObjectId(req.params.id), (err, user) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -86,8 +86,8 @@ getUserById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getUsers = async (req, res) => {
-    await User.find({}, (err, users) => {
+getUsers = (req, res) => {
+    User.find({}, (err, users) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

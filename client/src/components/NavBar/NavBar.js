@@ -1,22 +1,22 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
-    AppBar,
+    AppBar, Avatar,
     SwipeableDrawer as Drawer,
     Toolbar,
     useMediaQuery,
 } from '@material-ui/core'
-import AccountIcon from '@material-ui/icons/AccountCircleOutlined'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { ButtonNavBar, Logo, Text } from './components'
 import classes from '../../modules/nav.module.css'
 import Switch from './components/Switch'
+import { getCurrentUser } from '../../actions'
 
 const tabs = [
     { to: 'about', title: 'About' },
-    { to: 'businesses', title: 'Small Businesses' },
-    { to: 'volunteers', title: 'Volunteers' },
+    { to: 'business', title: 'Small Businesses' },
+    { to: 'volunteer', title: 'Volunteers' },
     { to: 'contact', title: 'Contact Us' },
 ]
 
@@ -28,13 +28,17 @@ const dropTabs = [
     { to: 'about', title: 'Logout' },
 ]
 
-function NavBar({ signedIn }) {
+function NavBar({
+    loaded, givenName, familyName, imageUrl, getCurrentUser,
+}) {
     const matches = useMediaQuery('(min-width:991.98px)')
     const [open, setOpen] = useState(false)
     const [drop, setDrop] = useState(false)
-    const accountIcon = useRef(null)
+    const avatar = useRef(null)
+
     const toggleDrop = () => setDrop(prev => !prev)
     const handleClose = () => setDrop(false)
+
     const Links = () => (
         <>
             {tabs.map(({ to, title }) => (
@@ -42,8 +46,9 @@ function NavBar({ signedIn }) {
             ))}
         </>
     )
+
     const DropLinks = () => {
-        const { top, left } = accountIcon?.current?.getBoundingClientRect() || {}
+        const { top, left } = avatar?.current?.getBoundingClientRect() || {}
         return (
             <div className={classes.drop} style={{ top: top + 30, left, display: drop ? 'block' : 'none' }} onClick={handleClose}>
                 <div className={classes.flex}>
@@ -54,20 +59,39 @@ function NavBar({ signedIn }) {
             </div>
         )
     }
+
     const AccountInfo = () => (
         <>
-            <AccountIcon
-                ref={accountIcon}
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={toggleDrop}
-            />
+            {imageUrl
+                ? (
+                    <Avatar
+                        ref={avatar}
+                        src={imageUrl}
+                        onClick={toggleDrop}
+                        style={{ width: 20, height: 20 }}
+                    />
+                )
+                : (
+                    <Avatar
+                        ref={avatar}
+                        onClick={toggleDrop}
+                        style={{ width: 20, height: 20 }}
+                    >
+                        {`${givenName?.charAt(0)}${familyName?.charAt(0)}`}
+                    </Avatar>
+                )}
             {drop && <DropLinks />}
             <div className={classes.account}>
-                <Text>John Doe</Text>
+                <Text>{`${givenName} ${familyName}`}</Text>
             </div>
         </>
     )
+
+    useEffect(() => {
+        const loadCurrentUser = async () => getCurrentUser()
+        loadCurrentUser()
+    }, [])
+
     return (
         <>
             <AppBar position="static" color="transparent" className={classes.root}>
@@ -76,7 +100,7 @@ function NavBar({ signedIn }) {
                     {matches ? (
                         <>
                             <Links />
-                            {signedIn
+                            {loaded
                                 ? <AccountInfo />
                                 : <ButtonNavBar userType="entry" />}
                             <Switch />
@@ -100,4 +124,6 @@ function NavBar({ signedIn }) {
     )
 }
 
-export default connect(({ currentUser }) => ({ signedIn: currentUser.loaded }))(NavBar)
+const mapStateToProps = ({ currentUser }) => ({ ...currentUser, ...currentUser.data })
+
+export default connect(mapStateToProps, { getCurrentUser })(NavBar)

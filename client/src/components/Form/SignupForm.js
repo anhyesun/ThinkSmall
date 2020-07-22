@@ -14,7 +14,7 @@ import {
     Text,
 } from './components'
 import { closeForm } from '../../actions'
-import LoginByGoogle from '../LoginByGoogle'
+import classes from '../../modules/form.module.css'
 
 const SignupForm = ({ open = false, closeForm }) => {
     const [firstName, setFirstName] = useState('')
@@ -36,6 +36,7 @@ const SignupForm = ({ open = false, closeForm }) => {
         <Dialog
             fullScreen={fullScreen}
             open={open}
+            scroll="paper"
             aria-labelledby="signup-form"
         >
             <Title id="signup-form" disableTypography>Please enter your information in the form or use google to signup</Title>
@@ -59,20 +60,26 @@ const SignupForm = ({ open = false, closeForm }) => {
                     <Text>Confirm Password</Text>
                     <Input autoFocus margin="dense" fullWidth placeholder="" type="password" id="confirm_password" onChange={e => setConfirmPassword(e.target.value)} required />
 
-                    <Actions>
+                    <Actions style={{ padding: '16px 0' }}>
 
                         <Button style={{ width: '50%' }} variant="outlined" label="Submit" type="submit">Submit</Button>
                         <Button style={{ width: '50%' }} variant="outlined" onClick={onClose}>Cancel</Button>
 
                     </Actions>
 
-                    <hr />
+                    <p style={{ textAlign: 'center' }}>or</p>
 
-                    <LoginByGoogle />
-
-                    <br />
+                    <div style={{ width: 'fit-content', margin: ' 0 auto 50px' }}>
+                        <a href="/auth/google">
+                            <Button className={classes.google}>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1004px-Google_%22G%22_Logo.svg.png" width={18} height={18} />
+                                Sign in with Google
+                            </Button>
+                        </a>
+                    </div>
 
                 </form>
+
             </Content>
 
         </Dialog>

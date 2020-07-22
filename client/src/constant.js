@@ -1,20 +1,3 @@
-export const styles = {
-    active: {
-        backgroundColor: '#fafafa',
-        cursor: 'pointer',
-        padding: '7.5px 10px',
-        fontSize: 'small',
-        borderRadius: 4,
-    },
-    inactive: {
-        backgroundColor: '#ffffff',
-        cursor: 'pointer',
-        padding: '7.5px 10px',
-        fontSize: 'small',
-        borderRadius: 4,
-    },
-}
-
 export const defaultNeeds = [
     { label: 'Call for Designers' },
     { label: 'Clothing' },

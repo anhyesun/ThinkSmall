@@ -6,7 +6,7 @@ const Request = new Schema(
         business: { type: String, required: true },
         details: { type: String, required: true },
         tags: [],
-        status: { type: String, enum: ['todo', 'in-progress', 'done'] },
+        status: { type: String, enum: ['To Do', 'In Progress', 'Done'], default: 'To Do' },
     },
     { timestamps: true },
 )

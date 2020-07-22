@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {
@@ -19,7 +15,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { StylesProvider } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
-import Home from './components/Home'
 import BusinessForm from './components/Form/BusinessForm'
 import RequestForm from './components/Form/RequestForm'
 import SignupForm from './components/Form/SignupForm'
@@ -29,8 +24,9 @@ import BusinessesList from './components/List/BusinessesList'
 import VolunteersList from './components/List/VolunteersList'
 import NavBar from './components/NavBar/NavBar'
 import Maps from './components/Maps'
+import AccountPage from './pages/AccountPage'
+import HomePage from './pages/HomePage'
 import './App.css'
-import Account from './components/Account'
 
 library.add(
     fab,
@@ -51,11 +47,11 @@ function App({ switchState }) {
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route path="/businesses" component={switchState ? Maps : BusinessesList} />
-                    <Route path="/volunteers" component={VolunteersList} />
+                    <Route path="/business" component={switchState ? Maps : BusinessesList} />
+                    <Route path="/volunteer" component={VolunteersList} />
                     <Route path="/inbox" component={Inbox} />
-                    <Route path="/account" component={Account} />
-                    <Route path="*" component={Home} />
+                    <Route path="/account" component={AccountPage} />
+                    <Route path="*" component={HomePage} />
                 </Switch>
                 <BusinessForm />
                 <RequestForm />

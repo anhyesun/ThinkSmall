@@ -25,3 +25,35 @@
     border: 1px solid #ccc;
     border-top: none;
 }
+
+.inactive {
+    background-color: #ffffff;
+    cursor: pointer;
+    padding: 7.5px 10px;
+    font-size: small;
+    border-radius: 4px;
+}
+
+.active {
+    composes: inactive;
+    background-color: #fafafa;
+}
+
+.google {
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    border: 1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    color: rgba(0, 0, 0, 0.54);
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+    padding: 7px 10px;
+    text-transform: none;
+}
+
+.google img {
+    margin-right: 10px;
+}

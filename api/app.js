@@ -29,6 +29,11 @@ async function init() {
 
   app.use('/', indexRouter);
 
+  // combine server-side and client-side routing (catch-all)
+  app.use('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {
     next(createError(404));

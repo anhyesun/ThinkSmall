@@ -1,4 +1,5 @@
 const Request = require('../models/request')
+const User = require('../models/user')
 const ObjectId = require('./helper')
 
 createRequest = (req, res) => {
@@ -19,11 +20,13 @@ createRequest = (req, res) => {
 
     request
         .save()
-        .then(() => {
+        .then(request => {
+
             return res.status(201).json({
                 success: true,
                 id: request._id,
                 message: 'Request created!',
+                request,
             })
         })
         .catch(error => {
@@ -34,7 +37,7 @@ createRequest = (req, res) => {
         })
 }
 
-updateRequest = async (req, res) => {
+updateRequest = (req, res) => {
     const request = req.body
 
     if (!request) {
@@ -44,7 +47,7 @@ updateRequest = async (req, res) => {
         })
     }
 
-    await Request.findByIdAndUpdate(ObjectId(req.params.id), request, (err, request) => {
+    Request.findByIdAndUpdate(ObjectId(req.params.id), request, (err, request) => {
         if (!request) {
             return res.status(404).json({
                 err,
@@ -59,8 +62,8 @@ updateRequest = async (req, res) => {
     })
 }
 
-deleteRequest = async (req, res) => {
-    await Request.findByIdAndDelete(ObjectId(req.params.id), async (err, request) => {
+deleteRequest = (req, res) => {
+    Request.findByIdAndDelete(ObjectId(req.params.id), async (err, request) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -69,21 +72,15 @@ deleteRequest = async (req, res) => {
             return res.status(404).json({ success: false, error: `Request not found` })
         }
 
-        await User.updateMany({}, {
-            $pull: {
-                $or: {
-                    requests: { _id: ObjectId(req.params.id) },
-                    tasks: { _id: ObjectId(req.params.id) },
-                }
-            }
-        })
+        await User.updateMany({}, { $pull: { requests: { _id: ObjectId(req.params.id) } } })
+        await User.updateMany({}, { $pull: { tasks: { _id: ObjectId(req.params.id) } } })
 
         return res.status(200).json({ success: true, data: request })
     }).catch(err => console.log(err))
 }
 
-getRequestById = async (req, res) => {
-    await Request.findById(ObjectId(req.params.id), (err, request) => {
+getRequestById = (req, res) => {
+    Request.findById(ObjectId(req.params.id), (err, request) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -95,8 +92,8 @@ getRequestById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getRequests = async (req, res) => {
-    await Request.find({}, (err, requests) => {
+getRequests = (req, res) => {
+    Request.find({}, (err, requests) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

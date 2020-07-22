@@ -5,8 +5,8 @@ const Business = new Schema(
     {
         storeName: { type: String, required: true },
         imageUrl: String,
-        storeOwner: { type: String, required: true },
-        location: { type: String, required: true },
+        storeOwner: String,
+        location: String,
         lat: Number,
         lng: Number,
         description: String,

@@ -1,7 +1,12 @@
-import axios from 'axios'
+import Axios from 'axios'
+import { getCurrentUser, updateUser } from './user'
 
 export const LOAD_BUSINESSES = 'LOAD_BUSINESSES'
 export const SET_BUSINESSES = 'SET_BUSINESSES'
+
+const axios = Axios.create({
+    baseURL: process.env.REACT_APP_WEBSITE_URL,
+})
 
 const loadBusinesses = () => ({
     type: LOAD_BUSINESSES,
@@ -20,7 +25,7 @@ export function getBusinesses(force = false) {
         dispatch(loadBusinesses())
 
         try {
-            const res = await axios.get('http://localhost:8080/businesses')
+            const res = await axios.get('/businesses')
             return dispatch(setBusinesses(res.data.data))
         } catch (err) {
             console.log(err)
@@ -29,10 +34,13 @@ export function getBusinesses(force = false) {
 }
 
 export function addBusiness(business) {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const { currentUser } = getState()
         try {
-            await axios.post('http://localhost:8080/business', business)
-            return dispatch(getBusinesses(true))
+            const res = await axios.post('/business', business)
+            dispatch(getBusinesses(true))
+            dispatch(updateUser(currentUser.data._id, { $push: { owns: res.data.business } }))
+            dispatch(getCurrentUser())
         } catch (err) {
             console.log(err)
         }
@@ -42,8 +50,9 @@ export function addBusiness(business) {
 export function deleteBusiness(id) {
     return async dispatch => {
         try {
-            await axios.delete(`http://localhost:8080/business/${id}`)
-            return dispatch(getBusinesses(true))
+            await axios.delete(`/business/${id}`)
+            dispatch(getBusinesses(true))
+            dispatch(getCurrentUser())
         } catch (err) {
             console.log(err)
         }
