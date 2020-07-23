@@ -96,7 +96,9 @@ function NavBar({
         <>
             <AppBar position="static" color="transparent" className={classes.root}>
                 <Toolbar>
-                    <Logo edge="start" variant="h5" className={classes.logo}>ThinkSmall</Logo>
+                    <Logo edge="start" variant="h5" className={classes.logo}>
+                        <Link to="/">ThinkSmall</Link>
+                    </Logo>
                     {matches ? (
                         <>
                             <Links />

@@ -50,7 +50,7 @@ const VolunteerCard = ({
                 target="_blank"
                 style={{ width: '100%', height: 36 }}
             >
-                Start Conversation
+                Start Chat
             </Button>
         </CardActions>
     </Card>

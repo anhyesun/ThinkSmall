@@ -2,6 +2,11 @@
 
 .root {
     display: flex;
+    height: 100%;
+}
+
+.container {
+    display: flex;
     width: 926px;
     margin: auto;
 }
@@ -25,10 +30,9 @@
     width: 380px;
 }
 
-@media (max-width: 926px) {
-    .root {
+@media (max-width: 768px) {
+    .container {
         display: block;
-        width: fit-content;
     }
 
     .img {

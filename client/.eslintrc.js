@@ -25,6 +25,7 @@ module.exports = {
     'consistent-return': OFF,
     'no-case-declarations': OFF,
     'no-irregular-whitespace': OFF,
+    'no-nested-ternary': OFF,
     'no-param-reassign': OFF,
     'no-restricted-globals': OFF,
     'no-shadow': OFF,

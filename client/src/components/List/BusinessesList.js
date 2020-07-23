@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Pagination, PaginationItem } from '@material-ui/lab'
+import {
+    GridList, GridListTile, useMediaQuery, useTheme,
+} from '@material-ui/core'
 import Tags from '../Tags/Tags'
 import Search from '../Search'
 import BusinessCard from './components/BusinessCard'
@@ -13,9 +16,12 @@ const BusinessesList = ({
     loading, businesses, setKeyword, setFilters, getBusinesses,
 }) => {
     const [currentPage, setPage] = useState(1)
-    const handleChange = (_, currentPage) => {
-        setPage(currentPage)
-    }
+    const theme = useTheme()
+    const sm = useMediaQuery(theme.breakpoints.down(600))
+    const md = useMediaQuery(theme.breakpoints.down(900))
+    const cols = sm ? 1 : (md ? 2 : 3)
+    const handleChange = (_, currentPage) => setPage(currentPage)
+
     useEffect(() => {
         async function loadBusinesses() {
             await getBusinesses()
@@ -46,11 +52,15 @@ const BusinessesList = ({
                             />
                         </div>
                         <div className={classes.container}>
-                            {businesses
-                                .slice((currentPage - 1) * 6, currentPage * 6)
-                                .map(({ _id, ...props }) => (
-                                    <BusinessCard key={_id} id={_id} {...props} />
-                                ))}
+                            <GridList cellHeight="auto" className={classes.gridList} cols={cols}>
+                                {businesses
+                                    .slice((currentPage - 1) * 6, currentPage * 6)
+                                    .map(({ _id, ...props }) => (
+                                        <GridListTile key={_id} cols={1}>
+                                            <BusinessCard id={_id} {...props} />
+                                        </GridListTile>
+                                    ))}
+                            </GridList>
                         </div>
                     </div>
                 )}

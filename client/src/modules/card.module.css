@@ -2,7 +2,6 @@
 
 .root {
     font-family: 'Baloo 2', cursive;
-    width: 33%;
     margin: 10px auto;
 }
 
@@ -12,6 +11,7 @@
 }
 
 .media {
+    border-radius: 4px;
     height: 0;
     padding-top: 56.25%;
 }
@@ -57,7 +57,6 @@
     color: red;
     cursor: pointer;
     margin-left: 10px;
-    width: 50%;
 }
 
 .panel {

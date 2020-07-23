@@ -17,35 +17,35 @@ const Text = withStyles({
 const ProfileCard = ({
     givenName, familyName, imageUrl, description, email, phone, supplementaryUrl, tags,
 }) => (
-    <Card className={classes.profile}>
-        <CardMedia className={classes.media} image={imageUrl || placeholder} title="User Picture" />
-        <CardContent>
-            <Text style={{ fontWeight: 'bold' }}>
-                {`${givenName} ${familyName}`}
-                <EditIcon />
-            </Text>
-            <Text style={{ paddingTop: '0.5em' }}>
-                {description}
-                <EditIcon />
-            </Text>
-            <Text style={{ paddingTop: '1rem' }}>
-                @
+        <Card className={classes.profile}>
+            <CardMedia className={classes.media} image={imageUrl || placeholder} title="User Picture" />
+            <CardContent>
+                <Text style={{ fontWeight: 'bold' }}>
+                    {`${givenName} ${familyName}`}
+                    <EditIcon />
+                </Text>
+                <Text style={{ paddingTop: '0.5em' }}>
+                    {description}
+                    <EditIcon />
+                </Text>
+                <Text style={{ paddingTop: '1rem' }}>
+                    @
                 {' '}
-                {email}
-                <EditIcon />
-            </Text>
-            <Text>
-                <PhoneIcon />
-                {phone}
-                <EditIcon />
-            </Text>
-            <Text>
-                <a href={supplementaryUrl}>{supplementaryUrl}</a>
-                <EditIcon />
-            </Text>
-            <Tags tags={tags} />
-        </CardContent>
-    </Card>
-)
+                    {email}
+                    <EditIcon />
+                </Text>
+                <Text>
+                    <PhoneIcon />
+                    {phone}
+                    <EditIcon />
+                </Text>
+                <Text>
+                    <a href={supplementaryUrl}>{supplementaryUrl}</a>
+                    <EditIcon />
+                </Text>
+                <Tags tags={tags} />
+            </CardContent>
+        </Card>
+    )
 
 export default ProfileCard

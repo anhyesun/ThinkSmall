@@ -87,7 +87,7 @@ getUserById = (req, res) => {
 }
 
 getUsers = (req, res) => {
-    User.find({}, (err, users) => {
+    User.find({ available: true }, (err, users) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

@@ -30,12 +30,10 @@ const BusinessCard = ({
     const [shorten, setShorten] = useState(true)
     const [hover, setHover] = useState(false)
     const requestIcon = useRef(null)
+    const toggle = () => setShorten(prev => !prev)
     const getRequest = async id => {
         try {
-            const baseUrl = process.env.NODE_ENV === 'production'
-                ? process.env.REACT_APP_PRODUCTION_URL
-                : process.env.REACT_APP_DEVELOPMENT_URL
-            const res = await axios.get(`${baseUrl}/request/${id}`)
+            const res = await axios.get(`${process.env.REACT_APP_WEBSITE_URL}/request/${id}`)
             return res.data.data
         } catch (err) {
             console.log(err)
@@ -74,6 +72,11 @@ const BusinessCard = ({
             </div>
         )
     }
+    const ReadMore = () => (
+        <a className={classes.link} onClick={toggle} style={{ fontSize: 'smaller' }}>
+            {shorten ? ' Read more' : ' Show less'}
+        </a>
+    )
     useEffect(() => {
         async function loadDetails() {
             setDetails([
@@ -84,7 +87,6 @@ const BusinessCard = ({
         }
         loadDetails()
     }, [])
-    const toggle = () => setShorten(prev => !prev)
 
     return (
         <Card className={classes.root} style={{ overflow: 'visible' }}>
@@ -100,11 +102,11 @@ const BusinessCard = ({
                     {hover && requests.length > 0 && <RequestPanel />}
                 </Text>
                 <Tags tags={tags} />
-                <Text gutterBottom variant="body2" color="textSecondary" component="p">
+                <Text gutterBottom variant="body2" color="textSecondary" component="p" style={{ minHeight: 91 }}>
                     {shorten ? shortDescription : description}
                     {shorten && shortDescription.length < description.length && '...'}
+                    {shortDescription.length < description.length && <ReadMore />}
                 </Text>
-                <a className={classes.link} onClick={toggle} style={{ fontSize: 'smaller' }}>Read more</a>
                 <Divider light style={{ margin: '10px auto' }} />
                 <div style={{ display: 'flex', alignItems: 'center', fontSize: 'small' }}>
                     <Icon icon="user" size="sm" style={{ margin: 'auto 10px auto 5px' }} />
