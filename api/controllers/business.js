@@ -99,7 +99,9 @@ getBusinesses = (req, res) => {
             return res.status(404).json({ success: false, error: 'Business not found' })
         }
         return res.status(200).json({ success: true, data: businesses })
-    }).catch(err => console.log(err))
+    })
+        .sort({ storeName: 1 })
+        .catch(err => console.log(err))
 }
 
 module.exports = {
