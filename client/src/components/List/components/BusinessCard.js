@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -125,7 +126,7 @@ const BusinessCard = ({
                     target="_blank"
                     style={{ width: '100%', height: 36 }}
                 >
-                    Contact Owner
+                    <Link to="/inbox">Contact Owner</Link>
                 </Button>
             </CardActions>
         </Card>

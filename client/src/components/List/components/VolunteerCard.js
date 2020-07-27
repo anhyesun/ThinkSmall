@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -16,7 +17,7 @@ const Text = withStyles({
 })(Typography)
 
 const VolunteerCard = ({
-    imageUrl, givenName, familyName, description, tags,
+    _id, imageUrl, givenName, familyName, description, tags,
 }) => (
     <Card className={classes.root}>
         <CardMedia
@@ -41,7 +42,7 @@ const VolunteerCard = ({
                 target="_blank"
                 style={{ width: '100%', height: 36 }}
             >
-                Start Chat
+                <Link to={`/inbox/${_id}`}>Start Chat</Link>
             </Button>
         </CardActions>
     </Card>

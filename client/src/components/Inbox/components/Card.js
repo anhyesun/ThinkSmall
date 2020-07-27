@@ -1,9 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/styles'
 import Square from './Square'
 
-const colors = ['#FFC759', '#FF7B9C', '#607196', '#BABFD1']
 const useStyles = makeStyles({
     card: {
         display: 'flex',
@@ -17,16 +15,16 @@ const useStyles = makeStyles({
 })
 
 const Card = ({
-    id, message, timestamp, users,
+    message, timestamp, user,
 }) => {
     const classes = useStyles()
 
     return (
         <div className={classes.card}>
-            <Square type="md" color={colors[id]} user={users[id]} />
+            <Square type="md" color={user.color} user={user} />
             <div style={{ fontSize: 'small' }}>
                 <span style={{ fontWeight: 600 }}>
-                    {users[id].name}
+                    {`${user.givenName} ${user.familyName}`}
                     {' '}
                     <span className={classes.timestamp}>{timestamp}</span>
                 </span>
@@ -36,6 +34,4 @@ const Card = ({
     )
 }
 
-const mapStateToProps = ({ users }) => ({ users })
-
-export default connect(mapStateToProps)(Card)
+export default Card

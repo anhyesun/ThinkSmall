@@ -55,9 +55,9 @@ const BusinessesList = ({
                             <GridList cellHeight="auto" className={classes.gridList} cols={cols}>
                                 {businesses
                                     .slice((currentPage - 1) * 6, currentPage * 6)
-                                    .map(({ _id, ...props }) => (
-                                        <GridListTile key={_id} cols={1}>
-                                            <BusinessCard id={_id} {...props} />
+                                    .map((props, i) => (
+                                        <GridListTile key={i} cols={1}>
+                                            <BusinessCard {...props} />
                                         </GridListTile>
                                     ))}
                             </GridList>

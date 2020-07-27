@@ -32,7 +32,8 @@ const useStyles = makeStyles({
 })
 
 const Input = ({
-    uid = 0, iid = 0, push,
+    // TODO: replace uid with the current user's _id
+    uid = '5f0966e9aa615c5132595683', iid = 0, push,
 }) => {
     const classes = useStyles()
     const [message, setMessage] = useState('')

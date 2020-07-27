@@ -38,31 +38,24 @@ export const defaultConversations = [
         title: 'daebak',
         messages: [
             {
-                id: 0,
+                id: '5f0966e9aa615c5132595683',
                 message: 'Hi, there!',
                 timestamp: '12:03 PM',
-                comments: [
-                    { id: 1, message: 'Hello', timestamp: '12:05 PM' },
-                    { id: 2, message: 'Hey!', timestamp: '12:07 PM' },
-                ],
             },
             {
-                id: 1,
+                id: '5f096790aa615c5132595684',
                 message: 'Hello!',
                 timestamp: '12:05 PM',
             },
             {
-                id: 2,
+                id: '5f09696baa615c5132595686',
                 message: 'Hi.',
                 timestamp: '12:17 PM',
             },
             {
-                id: 3,
+                id: '5f0968f3aa615c5132595685',
                 message: 'Hey there!',
                 timestamp: '12:23 PM',
-                comments: [
-                    { id: 0, message: 'Run Forrest, run!', timestamp: '12:27 PM' },
-                ],
             },
         ],
     },
@@ -72,21 +65,17 @@ export const defaultConversations = [
         title: 'Alice Kim',
         messages: [
             {
-                id: 0,
+                id: '5f0966e9aa615c5132595683',
                 message: 'Hi, there!',
                 timestamp: '12:03 PM',
-                comments: [
-                    { id: 1, message: 'Hello', timestamp: '12:05 PM' },
-                    { id: 2, message: 'Hey!', timestamp: '12:07 PM' },
-                ],
             },
             {
-                id: 1,
+                id: '5f09696baa615c5132595686',
                 message: 'Hello!',
                 timestamp: '12:05 PM',
             },
             {
-                id: 0,
+                id: '5f0966e9aa615c5132595683',
                 message: 'How\'s your project going?',
                 timestamp: '12:17 PM',
             },

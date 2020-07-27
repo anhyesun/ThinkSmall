@@ -8,6 +8,7 @@ const styles = {
             width: 20,
             height: 20,
             marginRight: 2.5,
+            objectFit: 'cover',
         },
         md: {
             borderRadius: 10,
@@ -15,6 +16,7 @@ const styles = {
             width: 35,
             height: 35,
             margin: 'auto 10px auto 0',
+            objectFit: 'cover',
         },
         lg: {
             borderRadius: 10,
@@ -22,6 +24,7 @@ const styles = {
             width: 50,
             height: 50,
             cursor: 'pointer',
+            objectFit: 'cover',
         },
         pr: {
             border: '1px solid #bbb',
@@ -32,17 +35,19 @@ const styles = {
             height: 50,
             margin: '5px auto',
             width: 50,
+            objectFit: 'cover',
         },
     },
 }
 
 export default ({ type, color, user }) => (
     <>
-        {!user.src && (
-            <div style={{ ...styles.square[type], background: color }}>
-                <p style={{ margin: 'auto' }}>{user.name.charAt(0)}</p>
-            </div>
-        )}
-        {user.src && <img src={user.src} style={styles.square[type]} alt={user.name} />}
+        {user.imageUrl
+            ? <img src={user.imageUrl} style={styles.square[type]} alt={user.givenName} />
+            : (
+                <div style={{ ...styles.square[type], background: color }}>
+                    <p style={{ margin: 'auto' }}>{user.givenName.charAt(0)}</p>
+                </div>
+            )}
     </>
 )

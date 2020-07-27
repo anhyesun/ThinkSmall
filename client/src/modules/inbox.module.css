@@ -1,10 +1,11 @@
 .root {
     display: flex;
-    height: 100%;
+    height: calc(100vh - 64px - 1em);
+    margin: 0 1em 1em;
 }
 
 .container {
-    background: #fafafa;
+    border: 1px solid;
     border-radius: 5px;
 }
 
@@ -14,10 +15,11 @@
 }
 
 .sidebar {
-    width: 200px;
-    padding: 10px 0;
-    margin-right: 5px;
+    border: 1px solid;
     font-size: small;
+    margin-right: 1em;
+    padding: 10px 0;
+    width: 200px;
 }
 
 .messages {
