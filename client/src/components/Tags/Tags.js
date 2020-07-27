@@ -8,8 +8,9 @@ import { setFilters } from '../../actions'
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
-        justifyContent: 'left',
         flexWrap: 'wrap',
+        minHeight: 35,
+        justifyContent: 'left',
         '& > *': {
             margin: theme.spacing(0.5),
         },

@@ -1,7 +1,6 @@
 import React from 'react'
 import Chip from '@material-ui/core/Chip'
 import { withStyles } from '@material-ui/core/styles'
-import classes from '../../../modules/tags.module.css'
 
 const UnselectedChip = withStyles({
     root: {
@@ -14,7 +13,7 @@ const UnselectedChip = withStyles({
     },
     clickableColorPrimary: {
         color: 'white',
-        background: '#6C7A89',
+        background: 'black',
         borderColor: 'transparent',
     },
 })(Chip)
@@ -25,7 +24,6 @@ export default ({ label, onClick }) => (
         label={label}
         variant="outlined"
         size="small"
-        className={classes.tag}
         onClick={onClick}
     />
 )

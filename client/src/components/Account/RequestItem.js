@@ -15,9 +15,7 @@ const RequestItem = ({
     return (
         <ListItem
             style={{
-                borderWidth: '1.5px',
-                borderColor: 'grey',
-                borderStyle: 'solid',
+                border: '1px solid black',
                 borderRadius: '5px',
                 alignItems: 'flex-start',
                 justifyContent: 'space-between',

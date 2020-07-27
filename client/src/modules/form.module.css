@@ -9,12 +9,12 @@
 }
 
 .textarea {
-    max-width: 100%;
-    min-width: 100%;
-    font-family: 'Baloo 2', cursive;
     border-radius: 4px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+    max-width: 100%;
+    min-width: 100%;
     padding: 11.5px 11px;
 }
 

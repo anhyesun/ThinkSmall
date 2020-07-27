@@ -33,7 +33,7 @@ const BusinessCard = ({
     const toggle = () => setShorten(prev => !prev)
     const getRequest = async id => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_WEBSITE_URL}/request/${id}`)
+            const res = await axios.get(`/request/${id}`)
             return res.data.data
         } catch (err) {
             console.log(err)
@@ -89,7 +89,7 @@ const BusinessCard = ({
     }, [])
 
     return (
-        <Card className={classes.root} style={{ overflow: 'visible' }}>
+        <Card className={classes.root}>
             <CardMedia
                 className={classes.media}
                 image={imageUrl || placeholder}
@@ -118,15 +118,6 @@ const BusinessCard = ({
                 </div>
             </CardContent>
             <CardActions style={{ padding: 16 }}>
-                <Button
-                    className={classes.button}
-                    size="small"
-                    variant="contained"
-                    target="_blank"
-                    style={{ width: '100%', height: 36 }}
-                >
-                    See Details
-                </Button>
                 <Button
                     className={classes.button}
                     size="small"

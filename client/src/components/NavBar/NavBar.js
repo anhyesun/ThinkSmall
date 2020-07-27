@@ -104,7 +104,7 @@ function NavBar({
                             <Links />
                             {loaded
                                 ? <AccountInfo />
-                                : <ButtonNavBar userType="entry" />}
+                                : <ButtonNavBar userType="entry" column />}
                             <Switch />
                         </>
                     ) : <Icon icon="bars" onClick={() => setOpen(true)} />}

@@ -63,7 +63,7 @@ db.users.insertMany([
         _id: ObjectId('5f0966e9aa615c5132595683'),
         givenName: 'Alice',
         familyName: 'Kim',
-        email: 'akim@mail.io',
+        email: 'aliceykim0828@gmail.com',
         phone: '(778)778-7788',
         imageUrl: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=630&q=80',
         description: 'I\'m a developer.',

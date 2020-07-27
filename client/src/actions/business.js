@@ -4,9 +4,7 @@ import { getCurrentUser, updateUser } from './user'
 export const LOAD_BUSINESSES = 'LOAD_BUSINESSES'
 export const SET_BUSINESSES = 'SET_BUSINESSES'
 
-const axios = Axios.create({
-    baseURL: process.env.REACT_APP_WEBSITE_URL,
-})
+const axios = Axios.create()
 
 const loadBusinesses = () => ({
     type: LOAD_BUSINESSES,

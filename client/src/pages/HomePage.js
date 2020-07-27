@@ -5,20 +5,20 @@ import classes from '../modules/home.module.css'
 const Square = ({
     title, subtitle, to, src,
 }) => (
-        <Link to={to}>
-            <div className={classes.square}>
-                <div>
-                    <img src={src} className={classes.img} alt={title} />
-                    <h3>{title}</h3>
-                    <p style={{ fontSize: 'small' }}>{subtitle}</p>
-                </div>
+    <Link to={to}>
+        <div className={classes.square}>
+            <div>
+                <img src={src} className={classes.img} alt={title} />
+                <h3>{title}</h3>
+                <p style={{ fontSize: 'small' }}>{subtitle}</p>
             </div>
-        </Link>
-    )
+        </div>
+    </Link>
+)
 
 const Home = () => (
-    <div className={classes.root} >
-        <div className={classes.container} >
+    <div className={classes.root}>
+        <div className={classes.container}>
             <Square
                 title="Business Owner"
                 subtitle="We need a nice logo for our website!"

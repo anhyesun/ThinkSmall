@@ -41,15 +41,6 @@ const VolunteerCard = ({
                 target="_blank"
                 style={{ width: '100%', height: 36 }}
             >
-                Read More
-            </Button>
-            <Button
-                className={classes.button}
-                size="small"
-                variant="contained"
-                target="_blank"
-                style={{ width: '100%', height: 36 }}
-            >
                 Start Chat
             </Button>
         </CardActions>

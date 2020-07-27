@@ -1,0 +1,64 @@
+.root {
+    display: flex;
+    flex-direction: row;
+    margin: 3em 1em;
+    min-width: 25vw;
+}
+
+.actions button {
+    display: block;
+    font-family: 'Baloo 2', cursive;
+    width: 100%;
+    margin: 5px auto;
+}
+
+.title {
+    float: left;
+    font-family: 'Baloo 2', cursive;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.subtitle {
+    font-family: 'Baloo 2', cursive;
+    font-weight: bold;
+    margin: 2em auto 1em;
+}
+
+.details {
+    flex: 1;
+    margin-left: 2em;
+}
+
+.buttons {
+    float: right;
+}
+
+.button {
+    background: black;
+    border: 1px solid transparent;
+    color: white;
+    font-family: 'Baloo 2', cursive;
+    transition: .25s;
+}
+
+.button:hover, .button.selected {
+    background: transparent;
+    border-color: black;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .root {
+        display: block;
+    }
+
+    .details {
+        margin: 0;
+    }
+    
+    .buttons, .button, .title {
+        width: 100%;
+    }
+}

@@ -20,14 +20,13 @@ const ButtonNavBar = ({ userType, openForm }) => {
         ],
     }
     return (
-        <div className={classes.flex}>
+        <div>
             {options[userType].map(({ title, action }) => (
                 <Button
                     key={title}
                     className={classes.button}
                     variant="outlined"
                     onClick={action}
-                    style={{ fontFamily: 'inherit', fontSize: 'small', marginLeft: 10 }}
                 >
                     {title}
                 </Button>
