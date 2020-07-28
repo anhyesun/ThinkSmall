@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@400;600;800&family=PT+Serif+Caption&display=swap');
 
+.tags {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    margin: 1px auto;
+}
+
+.tags > * {
+    margin: 1px
+}
+
 .input {
     width: 100%;
     padding: 7.5px 11px;
