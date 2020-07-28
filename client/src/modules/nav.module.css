@@ -47,7 +47,7 @@
 }
 
 .switch {
-    margin: 10px auto 10px 10px;
+    margin: 10px;
 }
 
 .toggle {
@@ -94,9 +94,5 @@
 
     .logo {
         font-size: 1.25rem;
-    }
-
-    .switch {
-        margin: 10px auto;
     }
 }

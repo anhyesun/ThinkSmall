@@ -4,24 +4,20 @@ import Button from '@material-ui/core/Button'
 import classes from '../../../modules/nav.module.css'
 import { openForm } from '../../../actions'
 
-const ButtonNavBar = ({ userType, openForm }) => {
-    const options = {
-        business: [
-            { title: 'Request Help', action: () => openForm('request') },
-            { title: 'Register Store', action: () => openForm('business') },
-        ],
-        volunteer: [
-            { title: 'Provide Help', action: () => openForm('help') },
-            { title: 'Register User', action: () => openForm('volunteer') },
-        ],
-        entry: [
-            { title: 'Sign Up', action: () => openForm('sign_up') },
-            { title: 'Login', action: () => openForm('login') },
-        ],
-    }
+const ButtonNavBar = ({ openForm }) => {
+    const actions = [
+        { title: 'Sign Up', action: () => openForm('sign_up') },
+        { title: 'Login', action: () => openForm('login') },
+    ]
+
     return (
-        <div>
-            {options[userType].map(({ title, action }) => (
+        <div style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            margin: '0 10px',
+        }}
+        >
+            {actions.map(({ title, action }) => (
                 <Button
                     key={title}
                     className={classes.button}

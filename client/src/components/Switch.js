@@ -3,10 +3,10 @@ import useSpring from 'react-use/lib/useSpring'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import Grid from '@material-ui/core/Grid'
-import { switchView } from '../../../actions'
-import classes from '../../../modules/nav.module.css'
+import { switchView } from '../actions'
+import classes from '../modules/nav.module.css'
 
-function SmallSwitch({ switchState, toggleSwitch }) {
+function Switch({ switchState, toggleSwitch }) {
     const [pixel, setPixel] = useState(switchState ? 25 : 0)
     const left = useSpring(pixel, 100, 15)
     const Switch = useRef(null)
@@ -23,7 +23,7 @@ function SmallSwitch({ switchState, toggleSwitch }) {
                         <div className={classes.thumb} style={{ left }} />
                     </div>
                 </Grid>
-                <Grid item><Icon icon="map-marked-alt" /></Grid>
+                <Grid item><Icon icon="map-marker-alt" /></Grid>
             </Grid>
         </div>
     )
@@ -34,4 +34,4 @@ const mapDispatchToProps = dispatch => ({
     toggleSwitch: () => dispatch(switchView()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SmallSwitch)
+export default connect(mapStateToProps, mapDispatchToProps)(Switch)

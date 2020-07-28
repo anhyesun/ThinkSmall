@@ -21,6 +21,10 @@ input {
   text-align: center;
 }
 
+.MuiGridList-root {
+  width: 100%;
+}
+
 .MuiGridListTile-tile {
   overflow: visible;
 }

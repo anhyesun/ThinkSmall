@@ -4,13 +4,14 @@
 
 .searchBar {
     width: fit-content;
-    margin: 50px auto;
+    margin: 4em auto 0;
 }
 
 .page {
     width: 100%;
     display: flex; 
     flex-direction: row-reverse;
+    margin-bottom: 1em;
 }
 
 .container {
