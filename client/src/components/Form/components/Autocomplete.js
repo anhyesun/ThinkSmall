@@ -13,7 +13,10 @@ const Autocomplete = ({ value, onChange, onSelect }) => {
                         ? classes.active
                         : classes.inactive
                     return (
-                        <div {...getSuggestionItemProps(suggestion, { className })}>
+                        <div
+                            key={suggestion.id}
+                            {...getSuggestionItemProps(suggestion, { className })}
+                        >
                             <span>{suggestion.description}</span>
                         </div>
                     )

@@ -16,10 +16,11 @@ const BusinessItem = ({
     return (
         <ListItem
             style={{
+                alignItems: 'flex-start',
                 border: '1px solid black',
                 borderRadius: '5px',
-                alignItems: 'flex-start',
                 justifyContent: 'space-between',
+                margin: '5px auto',
             }}
         >
             <div>

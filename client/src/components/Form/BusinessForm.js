@@ -71,8 +71,10 @@ const Form = ({
 
     const onDrop = files => {
         const reader = new FileReader()
-        reader.readAsDataURL(files[0])
-        setFile(files[0])
+        if (files[0]) {
+            reader.readAsDataURL(files[0])
+            setFile(files[0])
+        }
     }
 
     async function onSave(file) {
