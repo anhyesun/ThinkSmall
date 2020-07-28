@@ -25,6 +25,7 @@ import NavBar from './components/NavBar/NavBar'
 import AccountPage from './pages/AccountPage'
 import HomePage from './pages/HomePage'
 import './App.css'
+import About from './pages/AboutPage'
 
 library.add(
     fab,
@@ -60,6 +61,7 @@ function App() {
                 <Router>
                     <NavBar />
                     <Switch>
+                        <Route path="/about" component={About} />
                         <Route path="/business" component={BusinessesList} />
                         <Route path="/volunteer" component={VolunteersList} />
                         <Route path="/inbox" component={Inbox} />
