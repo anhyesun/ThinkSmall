@@ -40,10 +40,14 @@ As a business owner user, the app will need to store the following data: name of
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 * [Node.js](https://nodejs.org/)
+* [Mongoose](https://mongoosejs.com/)
 * [Express](https://expressjs.com/)
+* [MongoDB](https://www.mongodb.com/)
 * [AWS S3](https://aws.amazon.com/s3/)
 * [Google OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)
 * [Material UI](https://material-ui.com/)
+* [Heroku](https://herokuapp.com/)
+
 
 ## Getting Started
 
