@@ -75,14 +75,14 @@ b) Standard requirements:
 - Authentication in place
 - Have the ability to locate small businesses in a map view
 - Filter via specific criteria (distance range, services, etc.)
-- Provide a communication channel between business owners and volunteers
 - Different colored flags for businesses that require a service
 - Users can upload images and documents when they request help
 
 c) Stretch requirements:
-
-- Volunteer currency - volunteers who volunteer can be given non-monetary currency (virtual points) by businesses which can then be traded for accomplishments (milestones, recognition badges, achievements, level up)
+- Provide a communication channel between business owners and volunteers
+- Users can upload their custom tags when they request help
 - Dashboard to show the progress of volunteer jobs 
+- Volunteer currency - volunteers who volunteer can be given non-monetary currency (virtual points) by businesses which can then be traded for accomplishments (milestones, recognition badges, achievements, level up)
 - Provide matching suggestions based on the needs and resources e.g. business owners who are looking for someone to design their logo receives a list of available designers who registered themselves as available
 
 ## Minimal Requirement Break Down
