@@ -48,36 +48,38 @@ const BusinessesList = ({
                         </div>
                         {switchState
                             ? <Maps />
-                            : <div className={classes.container}>
-                                <div className={classes.page}>
-                                    <Pagination
-                                        onChange={handleChange}
-                                        page={currentPage}
-                                        count={Math.ceil(businesses.length / 6)}
-                                        renderItem={item => (
-                                            <PaginationItem {...item} />
-                                        )}
-                                    />
+                            : (
+                                <div className={classes.container}>
+                                    <div className={classes.page}>
+                                        <Pagination
+                                            onChange={handleChange}
+                                            page={currentPage}
+                                            count={Math.ceil(businesses.length / 6)}
+                                            renderItem={item => (
+                                                <PaginationItem {...item} />
+                                            )}
+                                        />
+                                    </div>
+                                    <GridList cellHeight="auto" cols={cols}>
+                                        {businesses
+                                            .slice((currentPage - 1) * 6, currentPage * 6)
+                                            .map((props, i) => (
+                                                <GridListTile key={i} cols={1}>
+                                                    <BusinessCard {...props} />
+                                                </GridListTile>
+                                            ))}
+                                    </GridList>
                                 </div>
-                                <GridList cellHeight="auto" cols={cols}>
-                                    {businesses
-                                        .slice((currentPage - 1) * 6, currentPage * 6)
-                                        .map((props, i) => (
-                                            <GridListTile key={i} cols={1}>
-                                                <BusinessCard {...props} />
-                                            </GridListTile>
-                                        ))}
-                                </GridList>
-                            </div>
-                        }
+                            )}
                     </div>
-                )
-            }
+                )}
         </>
     )
 }
 
-const mapStateToProps = ({ businesses, filters, keyword, switchState }) => ({
+const mapStateToProps = ({
+    businesses, filters, keyword, switchState,
+}) => ({
     switchState,
     loading: businesses.loading,
     businesses: businesses.data

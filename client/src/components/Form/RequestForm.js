@@ -65,8 +65,8 @@ const Form = ({
                 <div className={classes.tags}>
                     {tags.map(({ label, selected }, i) => (
                         selected
-                        ? <SelectedChip label={label} onClick={() => selectTag(i)} />
-                        : <UnselectedChip label={label} onClick={() => selectTag(i)} />
+                            ? <SelectedChip label={label} onClick={() => selectTag(i)} />
+                            : <UnselectedChip label={label} onClick={() => selectTag(i)} />
                     ))}
                     <DottedChip />
                 </div>
