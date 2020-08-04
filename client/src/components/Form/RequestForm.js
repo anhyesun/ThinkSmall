@@ -5,7 +5,7 @@ import {
     TextareaAutosize as Textarea,
 } from '@material-ui/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { useTheme, makeStyles } from '@material-ui/core/styles'
+import { useTheme } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import {
     Actions,
@@ -15,7 +15,7 @@ import {
 import { SelectedChip, UnselectedChip, DottedChip } from '../Tags/components'
 import { defaultTags } from '../../constant'
 import classes from '../../modules/form.module.css'
-import { addRequest, closeForm, addBusiness } from '../../actions'
+import { addRequest, closeForm } from '../../actions'
 
 const Form = ({
     open = false, closeForm, addRequest, owns = [],
@@ -32,7 +32,13 @@ const Form = ({
     }
 
     const onSubmit = e => {
-        addRequest({ business, details, tags: tags.filter(({ selected }) => selected).map(({ label }) => ({ label })) })
+        addRequest({
+            business,
+            details,
+            tags: tags
+                .filter(({ selected }) => selected)
+                .map(({ label }) => ({ label })),
+        })
         onClose()
     }
 

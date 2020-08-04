@@ -22,16 +22,19 @@ function Maps({ loading, businesses }) {
 
         const Markers = () => (
             <div>
-                {businesses.map(business => (business.requests?.length > 0
-                    && (
+                {businesses.map(business => {
+                    const { requests = [] } = business
+                    const icon = requests.length > 0 ? 'meteor' : 'check'
+                    const background = requests.length > 0 ? 'F22613' : '4DAF7C'
+                    return (
                         <Marker
                             key={business._id}
+                            icon={`https://cdn.mapmarker.io/api/v1/font-awesome/v5/pin?icon=fa-${icon}&background=${background}&size=36`}
                             position={{ lat: business.lat, lng: business.lng }}
-                            onClick={() => {
-                                setSelectedBusiness(business)
-                            }}
+                            onClick={() => setSelectedBusiness(business)}
                         />
-                    )))}
+                    )
+                })}
             </div>
         )
 
