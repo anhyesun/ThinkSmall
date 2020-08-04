@@ -28,7 +28,7 @@ const config = {
 const Client = new S3(config)
 
 const Form = ({
-    open = false, closeForm, addBusiness, givenName, familyName,
+    open = false, closeForm, addBusiness, givenName, familyName, email,
 }) => {
     const [location, setLocation] = useState('')
     const [storeName, setStoreName] = useState('')
@@ -60,6 +60,7 @@ const Form = ({
             storeName,
             imageUrl,
             storeOwner: `${givenName} ${familyName}`,
+            email,
             location,
             ...geolocation,
             description,

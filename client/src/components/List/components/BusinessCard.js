@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -23,7 +22,7 @@ const Text = withStyles({
 })(Typography)
 
 const BusinessCard = ({
-    _id, imageUrl, storeName, storeOwner,
+    _id, imageUrl, storeName, storeOwner, email,
     description, shortDescription = description.slice(0, Math.min(100, description.length)),
     location, requests, tags = [],
 }) => {
@@ -126,7 +125,7 @@ const BusinessCard = ({
                     target="_blank"
                     style={{ width: '100%', height: 36 }}
                 >
-                    <Link to="/inbox">Contact Owner</Link>
+                    <a href={`mailto:${email}?subject=Hello from ThinkSmall&body=Dear ${storeOwner},`}>Contact Owner</a>
                 </Button>
             </CardActions>
         </Card>
