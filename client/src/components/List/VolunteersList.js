@@ -69,7 +69,7 @@ const VolunteersList = ({
 const mapStateToProps = ({ users, filters, keyword }) => ({
     loading: users.loading,
     volunteers: users.data
-        .filter(({ description }) => description.includes(keyword))
+        .filter(({ description = '' }) => description.includes(keyword))
         .filter(({ tags }) => !filters.length
             || filters.every(tag => tags.some(({ label }) => label === tag))),
 })
