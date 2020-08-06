@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@400;600;800&family=PT+Serif+Caption&display=swap');
+
+.root {
+    margin: 2em;
+}
+
+.container {
+    display: flex;
+    max-width: 926px;
+    margin: auto;
+}
+
+.img {
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    object-fit: cover;
+    height: 180px;
+    width: 180px;
+}
+
+.square {
+    border-radius: 7.5px;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    width: 380px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: block;
+    }
+
+    .img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .square {
+        width: 280px;
+    }
+}

@@ -17,7 +17,7 @@ const About = () => (
     <div className={classes.root}>
 
         <div className={classes.container}>
-            <h2> Get to know ThinkSmall </h2>
+            <h2> GET TO KNOW THINKSMALL </h2>
         </div>
 
         <div className={classes.container}>
