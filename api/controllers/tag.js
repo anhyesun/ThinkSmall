@@ -70,7 +70,7 @@ deleteTag = (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: tag })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 getTagById = (req, res) => {
@@ -83,7 +83,7 @@ getTagById = (req, res) => {
             return res.status(404).json({ success: false, error: `Tag not found` })
         }
         return res.status(200).json({ success: true, data: tag })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 getTags = (req, res) => {
@@ -95,7 +95,7 @@ getTags = (req, res) => {
             return res.status(404).json({ success: false, error: `Tag not found` })
         }
         return res.status(200).json({ success: true, data: tags })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 module.exports = {

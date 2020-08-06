@@ -90,3 +90,11 @@ export const defaultTags = [
     { label: 'Call for Drivers', selected: false },
     { label: 'Call for Writers', selected: false },
 ]
+
+export const defaultSkillTags = [
+    { label: 'Designer', selected: false },
+    { label: 'Developer', selected: false },
+    { label: 'Translator', selected: false },
+    { label: 'Driver', selected: false },
+    { label: 'Writer', selected: false },
+]

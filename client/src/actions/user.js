@@ -34,7 +34,7 @@ export function getUsers(force = false) {
             const res = await axios.get('/users')
             return dispatch(setUsers(res.data.data))
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
@@ -47,7 +47,7 @@ export function getUserById(id) {
             const res = await axios.get(`/user/${id}`)
             return dispatch(setCurrentUser(res.data.data))
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
@@ -58,7 +58,7 @@ export function addUser(user) {
             await axios.post('/user', user)
             return dispatch(getUsers(true))
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
@@ -69,7 +69,7 @@ export function updateUser(id, body) {
             await axios.put(`/user/${id}`, body)
             return dispatch(getUserById(id))
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
@@ -90,7 +90,7 @@ export function getCurrentUser() {
                     dispatch(getUserById(res.data._id))
                 }
             } catch (err) {
-                console.log(err)
+                console.error(err)
             }
         }
     }

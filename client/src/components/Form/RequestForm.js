@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Button,
     Dialog, DialogTitle as Title,
@@ -7,6 +7,7 @@ import {
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
+import axios from 'axios'
 import {
     Actions,
     Select, MenuItem,
@@ -15,30 +16,47 @@ import {
 import { SelectedChip, UnselectedChip, DottedChip } from '../Tags/components'
 import { defaultTags } from '../../constant'
 import classes from '../../modules/form.module.css'
-import { addRequest, closeForm } from '../../actions'
+import { addRequest, closeForm, updateRequest } from '../../actions'
 
 const Form = ({
-    open = false, closeForm, addRequest, owns = [],
+    open = false, closeForm, addRequest, updateRequest, owns = [], requestId, setId,
 }) => {
     const [business, setBusiness] = useState('')
     const [details, setDetails] = useState('')
     const [tags, setTags] = useState(defaultTags)
     const fullScreen = useMediaQuery(useTheme().breakpoints.down('sm'))
 
+    useEffect(() => {
+        async function loadRequest() {
+            const res = await axios.get(`/request/${requestId}`)
+            const request = res.data.data
+            setDetails(request?.details)
+            setTags(request?.tags)
+            setBusiness(request?.business)
+        }
+        if (requestId !== null) {
+            loadRequest()
+        }
+    }, [requestId])
+
     const onClose = () => {
         setDetails('')
         setTags(defaultTags)
         closeForm('request')
+        setId(null)
     }
 
     const onSubmit = e => {
-        addRequest({
+        const request = {
             business,
+            storeName: owns.find(({ _id }) => _id === business)?.storeName,
             details,
             tags: tags
                 .filter(({ selected }) => selected)
                 .map(({ label }) => ({ label })),
-        })
+        }
+        if (requestId === null) addRequest(request)
+        else updateRequest(requestId, request)
         onClose()
     }
 
@@ -61,8 +79,8 @@ const Form = ({
                 </ContentText>
                 <Text>Which business of yours do you need help with?</Text>
                 <Select variant="outlined" defaultValue="" value={business} onChange={e => setBusiness(e.target.value)}>
-                    {owns.map(({ storeName }, i) => (
-                        <MenuItem key={i} value={storeName} dense>
+                    {owns.map(({ _id, storeName }, i) => (
+                        <MenuItem key={i} value={_id} dense>
                             {storeName}
                         </MenuItem>
                     ))}
@@ -71,10 +89,21 @@ const Form = ({
                 <div className={classes.tags}>
                     {tags.map(({ label, selected }, i) => (
                         selected
-                            ? <SelectedChip key={label} label={label} onClick={() => selectTag(i)} />
-                            : <UnselectedChip key={label} label={label} onClick={() => selectTag(i)} />
+                            ? (
+                                <SelectedChip
+                                    key={label}
+                                    label={label}
+                                    onClick={() => selectTag(i)}
+                                />
+                            )
+                            : (
+                                <UnselectedChip
+                                    key={label}
+                                    label={label}
+                                    onClick={() => selectTag(i)}
+                                />
+                            )
                     ))}
-                    <DottedChip />
                 </div>
                 <Textarea
                     aria-label="details"
@@ -94,4 +123,4 @@ const Form = ({
 
 const mapStateToProps = ({ forms, currentUser }) => ({ open: forms.request, ...currentUser.data })
 
-export default connect(mapStateToProps, { addRequest, closeForm })(Form)
+export default connect(mapStateToProps, { addRequest, updateRequest, closeForm })(Form)

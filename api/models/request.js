@@ -4,6 +4,7 @@ const { Schema } = mongoose
 const Request = new Schema(
     {
         business: { type: String, required: true },
+        storeName: { type: String, required: true },
         details: { type: String, required: true },
         tags: [],
         status: { type: String, enum: ['To Do', 'In Progress', 'Done'], default: 'To Do' },

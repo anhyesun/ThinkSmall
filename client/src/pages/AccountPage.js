@@ -15,6 +15,8 @@ import BusinessItem from '../components/Account/BusinessItem'
 import { updateUser, getCurrentUser, openForm } from '../actions'
 import classes from '../modules/account.module.css'
 import filler from '../assets/plant.svg'
+import BusinessForm from '../components/Form/BusinessForm'
+import RequestForm from '../components/Form/RequestForm'
 
 const Title = ({ title }) => <Typography className={classes.title}>{title}</Typography>
 const Subtitle = ({ title }) => <Typography className={classes.subtitle}>{title}</Typography>
@@ -47,6 +49,8 @@ const AccountPage = ({
     ...props
 }) => {
     const [asOwner, setAsOwner] = useState(true)
+    const [bid, setId] = useState(null)
+    const [rid, setRid] = useState(null)
     const actions = [
         { title: 'Request Help', action: () => openForm('request') },
         { title: 'Register Store', action: () => openForm('business') },
@@ -63,7 +67,13 @@ const AccountPage = ({
             {requests.length > 0
                 ? (
                     <List>
-                        {requests.map((props, i) => <RequestItem key={i} {...props} canDelete />)}
+                        {requests.map((props, i) => (
+                            <RequestItem
+                                key={i}
+                                {...props}
+                                setId={setRid}
+                            />
+                        ))}
                     </List>
                 )
                 : (
@@ -76,7 +86,13 @@ const AccountPage = ({
             {owns.length > 0
                 ? (
                     <List>
-                        {owns.map((props, i) => <BusinessItem key={i} {...props} canDelete />)}
+                        {owns.map((props, i) => (
+                            <BusinessItem
+                                key={i}
+                                {...props}
+                                setId={setId}
+                            />
+                        ))}
                     </List>
                 )
                 : (
@@ -94,7 +110,7 @@ const AccountPage = ({
             {tasks.length > 0
                 ? (
                     <List>
-                        {tasks.map((props, i) => <RequestItem key={i} {...props} canDelete />)}
+                        {tasks.map((props, i) => <RequestItem key={i} {...props} />)}
                     </List>
                 )
                 : (
@@ -161,7 +177,7 @@ const AccountPage = ({
             : (
                 <div className={classes.root}>
                     <div>
-                        <ProfileCard {...props} />
+                        <ProfileCard _id={_id} {...props} />
                         <ActionButtons />
                     </div>
                     <div className={classes.details}>
@@ -171,13 +187,14 @@ const AccountPage = ({
                         </div>
                         {asOwner ? <BusinessTab /> : <VolunteerTab />}
                     </div>
+                    <BusinessForm businessId={bid} setId={setId} />
+                    <RequestForm requestId={rid} setId={setRid} />
                 </div>
             )
     )
 }
 
-const mapStateToProps = ({ _id = '5f0932a99eeb33d77955d15c', currentUser }) => ({
-    _id,
+const mapStateToProps = ({ currentUser }) => ({
     loading: currentUser.loading,
     ...currentUser.data,
 })

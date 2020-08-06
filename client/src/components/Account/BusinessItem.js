@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {
-    IconButton, ListItem, ListItemIcon, ListItemText,
+    IconButton, ListItem, ListItemText,
 } from '@material-ui/core'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { ArrowIcon, DeleteIcon, EditIcon } from './Icons'
 import Tags from '../Tags/Tags'
-import { deleteBusiness } from '../../actions'
+import { deleteBusiness, openForm } from '../../actions'
 
 const BusinessItem = ({
     storeName, storeOwner, location, tags, description,
-    deleteBusiness, canDelete,
+    deleteBusiness, _id, setId, openForm,
 }) => {
     const [expanded, setExpanded] = useState(false)
+    const [open, setOpen] = useState(false)
     return (
         <ListItem
             style={{
@@ -25,6 +26,21 @@ const BusinessItem = ({
         >
             <div>
                 <ListItemText primary={storeName} secondary={description} />
+                <div>
+                    <IconButton
+                        hidden={open}
+                        onClick={() => {
+                            setId(_id)
+                            openForm('business')
+                            setOpen(!open)
+                        }}
+                    >
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton onClick={() => deleteBusiness(_id)}>
+                        <DeleteIcon />
+                    </IconButton>
+                </div>
                 {expanded && (
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -44,4 +60,4 @@ const BusinessItem = ({
     )
 }
 
-export default connect(null, { deleteBusiness })(BusinessItem)
+export default connect(null, { deleteBusiness, openForm })(BusinessItem)

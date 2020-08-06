@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {
     Chip, IconButton,
-    ListItem, ListItemText, ListItemIcon,
+    ListItem, ListItemText,
 } from '@material-ui/core'
-import { ArrowIcon, DeleteIcon } from './Icons'
-import { deleteRequest } from '../../actions'
+import { ArrowIcon, DeleteIcon, EditIcon } from './Icons'
+import { deleteRequest, openForm } from '../../actions'
 import { now } from '../../reducers/helper'
 
 const RequestItem = ({
-    _id, business, details, status, createdAt, deleteRequest, canDelete,
+    _id, storeName, details, status, createdAt, deleteRequest, setId, openForm,
 }) => {
     const [expanded, setExpanded] = useState(false)
+    const [open, setOpen] = useState(false)
     return (
         <ListItem
             style={{
@@ -19,10 +20,24 @@ const RequestItem = ({
                 borderRadius: '5px',
                 alignItems: 'flex-start',
                 justifyContent: 'space-between',
+                margin: '5px auto',
             }}
         >
             <div>
-                <ListItemText primary={business} secondary={details} />
+                <ListItemText primary={storeName} secondary={details} />
+                <div>
+                    <IconButton onClick={() => {
+                        setId(_id)
+                        openForm('request')
+                        setOpen(!open)
+                    }}
+                    >
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton onClick={() => deleteRequest(_id)}>
+                        <DeleteIcon />
+                    </IconButton>
+                </div>
                 <Chip label={status} color="primary" variant="outlined" size="small" style={{ fontFamily: `'Baloo 2', cursive` }} />
                 {expanded && (
                     <p style={{ fontSize: 'small', marginBottom: 0 }}>
@@ -37,4 +52,4 @@ const RequestItem = ({
     )
 }
 
-export default connect(null, { deleteRequest })(RequestItem)
+export default connect(null, { deleteRequest, openForm })(RequestItem)

@@ -18,6 +18,7 @@
     border-radius: 4px 0 0;
     height: 0;
     padding-top: 56.25%;
+    padding-bottom: 20px;
 }
 
 .actions {
@@ -80,4 +81,19 @@
     color: black;
     transition-duration: 0.3s;
     text-align: center;
+}
+
+.input {
+    display: none;
+}
+
+.skillTags {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    margin: 1px auto;
+}
+
+.skillTags > * {
+    margin: 1px
 }

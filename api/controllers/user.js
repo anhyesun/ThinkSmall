@@ -70,7 +70,7 @@ deleteUser = (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: user })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 getUserById = (req, res) => {
@@ -83,7 +83,7 @@ getUserById = (req, res) => {
             return res.status(404).json({ success: false, error: `User not found` })
         }
         return res.status(200).json({ success: true, data: user })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 getUsers = (req, res) => {
@@ -95,7 +95,7 @@ getUsers = (req, res) => {
             return res.status(404).json({ success: false, error: `User not found` })
         }
         return res.status(200).json({ success: true, data: users })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 module.exports = {

@@ -37,7 +37,7 @@ const BusinessCard = ({
             const res = await axios.get(`/request/${id}`)
             return res.data.data
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
     const RequestIcon = () => (

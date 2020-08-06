@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getCurrentUser, updateUser } from './user'
+import { getBusinesses } from './business'
 
 export const LOAD_REQUESTS = 'LOAD_REQUESTS'
 export const SET_REQUESTS = 'SET_REQUESTS'
@@ -24,7 +25,7 @@ export function getRequests(force = false) {
             const res = await axios.get('/requests')
             return dispatch(setRequests(res.data.data))
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
@@ -35,22 +36,37 @@ export function addRequest(request) {
         try {
             const res = await axios.post('/request', request)
             dispatch(getRequests(true))
+            dispatch(getBusinesses(true))
             dispatch(updateUser(currentUser.data._id, { $push: { requests: res.data.request } }))
             dispatch(getCurrentUser())
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
 
 export function deleteRequest(id) {
-    return async dispatch => {
+    return async (dispatch, getState) => {
         try {
             await axios.delete(`/request/${id}`)
             dispatch(getRequests(true))
+            dispatch(getBusinesses(true))
             dispatch(getCurrentUser())
         } catch (err) {
-            console.log(err)
+            console.error(err)
+        }
+    }
+}
+
+export function updateRequest(id, body) {
+    return async (dispatch, getState) => {
+        try {
+            await axios.put(`/request/${id}`, body)
+            dispatch(getRequests(true))
+            dispatch(getBusinesses(true))
+            dispatch(getCurrentUser())
+        } catch (err) {
+            console.error(err)
         }
     }
 }

@@ -46,13 +46,16 @@ updateBusiness = (req, res) => {
         })
     }
 
-    Business.findByIdAndUpdate(ObjectId(req.params.id), business, (err, business) => {
+    Business.findByIdAndUpdate(ObjectId(req.params.id), business, { new: true }, async (err, business) => {
         if (!business) {
             return res.status(404).json({
                 err,
                 message: 'Business not found!',
             })
         }
+
+        await User.updateMany({ 'owns._id': ObjectId(req.params.id) }, { $set: { 'owns.$': business } })
+
         return res.status(200).json({
             success: true,
             id: business._id,
@@ -74,7 +77,7 @@ deleteBusiness = (req, res) => {
         await User.updateMany({}, { $pull: { owns: { _id: ObjectId(req.params.id) } } })
 
         return res.status(200).json({ success: true, data: business })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 getBusinessById = (req, res) => {
@@ -87,7 +90,7 @@ getBusinessById = (req, res) => {
             return res.status(404).json({ success: false, error: 'Business not found' })
         }
         return res.status(200).json({ success: true, data: business })
-    }).catch(err => console.log(err))
+    }).catch(err => err)
 }
 
 getBusinesses = (req, res) => {
@@ -101,7 +104,7 @@ getBusinesses = (req, res) => {
         return res.status(200).json({ success: true, data: businesses })
     })
         .sort({ storeName: 1 })
-        .catch(err => console.log(err))
+        .catch(err => err)
 }
 
 module.exports = {
