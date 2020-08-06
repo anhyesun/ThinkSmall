@@ -1,12 +1,8 @@
-import Axios from 'axios'
+import axios from 'axios'
 import { getCurrentUser, updateUser } from './user'
 
 export const LOAD_REQUESTS = 'LOAD_REQUESTS'
 export const SET_REQUESTS = 'SET_REQUESTS'
-
-const axios = Axios.create({
-    baseURL: process.env.REACT_APP_WEBSITE_URL,
-})
 
 const loadRequests = () => ({
     type: LOAD_REQUESTS,

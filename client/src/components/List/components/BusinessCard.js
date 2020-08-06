@@ -12,6 +12,7 @@ import cx from 'classnames'
 import axios from 'axios'
 import Tags from '../../Tags/Tags'
 import { LoadingIndicator } from '../../Form/components'
+import DetailsForm from '../../Form/DetailsForm'
 import classes from '../../../modules/card.module.css'
 import placeholder from '../../../assets/white-room.jpeg'
 
@@ -26,10 +27,10 @@ const BusinessCard = ({
     description, shortDescription = description.slice(0, Math.min(100, description.length)),
     location, requests, tags = [],
 }) => {
+    const [open, setOpen] = useState(false)
     const [details, setDetails] = useState()
     const [shorten, setShorten] = useState(true)
     const [hover, setHover] = useState(false)
-    const requestIcon = useRef(null)
     const toggle = () => setShorten(prev => !prev)
     const getRequest = async id => {
         try {
@@ -41,37 +42,13 @@ const BusinessCard = ({
     }
     const RequestIcon = () => (
         <div
-            ref={requestIcon}
             className={classes.icon}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
+            onClick={() => setOpen(true)}
         >
             <Icon icon="meteor" size="xs" style={{ marginRight: 5 }} />
             {requests.length}
         </div>
     )
-    const RequestPanel = () => {
-        const left = requestIcon?.current?.getBoundingClientRect()?.left + 40
-
-        return (
-            <div
-                className={classes.panel}
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-                style={{ left }}
-            >
-                <div style={{ fontWeight: 'bold' }}>Pending requests</div>
-                {details
-                    ? details.map(({ details }, i) => (
-                        <div key={i} className={classes.request}>
-                            {details}
-                            <Button variant="contained" className={cx(classes.details, classes.button)}>See Details</Button>
-                        </div>
-                    ))
-                    : <LoadingIndicator />}
-            </div>
-        )
-    }
     const ReadMore = () => (
         <a className={classes.link} onClick={toggle} style={{ fontSize: 'smaller' }}>
             {shorten ? ' Read more' : ' Show less'}
@@ -86,7 +63,7 @@ const BusinessCard = ({
             ])
         }
         loadDetails()
-    }, [])
+    }, [_id])
 
     return (
         <Card className={classes.root}>
@@ -99,7 +76,6 @@ const BusinessCard = ({
                 <Text variant="h5" component="h6" style={{ display: 'flex' }}>
                     {storeName}
                     {requests.length > 0 && <RequestIcon />}
-                    {hover && requests.length > 0 && <RequestPanel />}
                 </Text>
                 <Tags tags={tags} />
                 <Text gutterBottom variant="body2" color="textSecondary" component="p" style={{ minHeight: 91 }}>
@@ -128,6 +104,7 @@ const BusinessCard = ({
                     <a href={`mailto:${email}?subject=Hello from ThinkSmall&body=Dear ${storeOwner},`}>Contact Owner</a>
                 </Button>
             </CardActions>
+            <DetailsForm details={details} open={open} closeForm={() => setOpen(false)} />
         </Card>
     )
 }
