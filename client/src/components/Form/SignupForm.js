@@ -7,6 +7,7 @@ import {
     Dialog,
     DialogTitle as Title,
 } from '@material-ui/core'
+import axios from 'axios'
 import {
     Actions,
     Content,
@@ -22,14 +23,27 @@ const SignupForm = ({ open = false, closeForm }) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [passwordMatchState, setPasswordMatchState] = useState(false)
+    const [registrationDuplicate, setRegistrationDuplicate] = useState(false)
 
     const theme = useTheme()
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
     const onClose = () => closeForm('sign_up')
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()
-        onClose()
+
+        if (password !== confirmPassword) {
+            setPasswordMatchState(true)
+        }
+
+        if (password === confirmPassword) {
+            setPasswordMatchState(false)
+            await axios.post('/register', {
+                email, password, givenName: firstName, familyName: lastName,
+            })
+            onClose()
+        }
     }
 
     return (
@@ -44,21 +58,25 @@ const SignupForm = ({ open = false, closeForm }) => {
             <Content>
 
                 <form onSubmit={handleSubmit}>
+                    {registrationDuplicate && <Text>This email is already registered</Text>}
+
                     <Text>First Name</Text>
 
                     <Input autoFocus margin="dense" fullWidth placeholder="" className="input" onChange={e => setFirstName(e.target.value)} required />
 
                     <Text>Last Name</Text>
-                    <Input autoFocus margin="dense" fullWidth placeholder="" onChange={e => setLastName(e.target.value)} required />
+                    <Input margin="dense" fullWidth placeholder="" onChange={e => setLastName(e.target.value)} required />
 
                     <Text>Email</Text>
-                    <Input autoFocus margin="dense" fullWidth placeholder="" onChange={e => setEmail(e.target.value)} type="email" required />
+                    <Input margin="dense" fullWidth placeholder="" onChange={e => setEmail(e.target.value)} type="email" required />
 
                     <Text>Password</Text>
-                    <Input autoFocus margin="dense" fullWidth placeholder="" type="password" id="password" onChange={e => setPassword(e.target.value)} required />
+                    <Input margin="dense" fullWidth placeholder="" type="password" id="password" onChange={e => setPassword(e.target.value)} required />
 
                     <Text>Confirm Password</Text>
-                    <Input autoFocus margin="dense" fullWidth placeholder="" type="password" id="confirm_password" onChange={e => setConfirmPassword(e.target.value)} required />
+                    <Input margin="dense" fullWidth placeholder="" type="password" id="confirm_password" onChange={e => setConfirmPassword(e.target.value)} required />
+
+                    {passwordMatchState && <Text>Your Password does not match</Text>}
 
                     <Actions style={{ padding: '16px 0' }}>
 

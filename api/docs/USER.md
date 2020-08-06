@@ -10,6 +10,7 @@ Create a single user.
     "givenName": "Alice",
     "familyName": "Kim",
     "email": "akim@mail.io",
+    "password": "1718",
     "imageUrl": "https://i.pinimg.com/736x/18/45/d6/1845d65689ecc7cecfaf8f4d958a7f67.jpg",
     "description": "I'm a developer.",
     "tags": ["Developer"],
