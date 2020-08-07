@@ -72,6 +72,8 @@ const AccountPage = ({
                                 key={i}
                                 {...props}
                                 setId={setRid}
+                                canDelete
+                                canEdit
                             />
                         ))}
                     </List>
@@ -91,6 +93,8 @@ const AccountPage = ({
                                 key={i}
                                 {...props}
                                 setId={setId}
+                                canDelete
+                                canEdit
                             />
                         ))}
                     </List>

@@ -32,12 +32,11 @@ export function getRequests(force = false) {
 
 export function addRequest(request) {
     return async (dispatch, getState) => {
-        const { currentUser } = getState()
         try {
-            const res = await axios.post('/request', request)
+            await axios.post('/request', request)
             dispatch(getRequests(true))
             dispatch(getBusinesses(true))
-            dispatch(updateUser(currentUser.data._id, { $push: { requests: res.data.request } }))
+            // dispatch(updateUser(currentUser.data._id, { $push: { requests: res.data.request } }))
             dispatch(getCurrentUser())
         } catch (err) {
             console.error(err)

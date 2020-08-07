@@ -23,7 +23,8 @@ createRequest = (req, res) => {
         .save()
         .then(async request => {
             await Business.findByIdAndUpdate(ObjectId(body.business), { $push: { requests: request._id.toString() } })
-            await User.updateMany({ 'owns._id': ObjectId(body.business) }, { $push: { 'owns.$.requests': request } })
+            await User.updateMany({ 'owns._id': body.business }, { $push: { requests: request } })
+            await User.updateMany({ 'owns._id': body.business }, { $push: { 'owns.$.requests': request } })
 
             return res.status(201).json({
                 success: true,
@@ -58,7 +59,7 @@ updateRequest = (req, res) => {
             })
         }
 
-        await User.updateMany({ 'requests._id': req.params.id }, { $set: { 'requests.$': request } })
+        await User.updateMany({ 'requests._id': ObjectId(req.params.id) }, { $set: { 'requests.$': request } })
 
         return res.status(200).json({
             success: true,

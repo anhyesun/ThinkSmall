@@ -11,6 +11,7 @@ import { deleteBusiness, openForm } from '../../actions'
 const BusinessItem = ({
     storeName, storeOwner, location, tags, description,
     deleteBusiness, _id, setId, openForm,
+    canDelete, canEdit,
 }) => {
     const [expanded, setExpanded] = useState(false)
     const [open, setOpen] = useState(false)
@@ -27,7 +28,7 @@ const BusinessItem = ({
             <div>
                 <ListItemText primary={storeName} secondary={description} />
                 <div>
-                    <IconButton
+                    {canEdit && <IconButton
                         hidden={open}
                         onClick={() => {
                             setId(_id)
@@ -36,10 +37,10 @@ const BusinessItem = ({
                         }}
                     >
                         <EditIcon />
-                    </IconButton>
-                    <IconButton onClick={() => deleteBusiness(_id)}>
+                    </IconButton>}
+                    {canDelete && <IconButton onClick={() => deleteBusiness(_id)}>
                         <DeleteIcon />
-                    </IconButton>
+                    </IconButton>}
                 </div>
                 {expanded && (
                     <div>

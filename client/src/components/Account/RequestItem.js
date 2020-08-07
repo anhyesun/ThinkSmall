@@ -10,6 +10,7 @@ import { now } from '../../reducers/helper'
 
 const RequestItem = ({
     _id, storeName, details, status, createdAt, deleteRequest, setId, openForm,
+    canDelete, canEdit,
 }) => {
     const [expanded, setExpanded] = useState(false)
     const [open, setOpen] = useState(false)
@@ -26,17 +27,17 @@ const RequestItem = ({
             <div>
                 <ListItemText primary={storeName} secondary={details} />
                 <div>
-                    <IconButton onClick={() => {
+                    {canEdit && <IconButton onClick={() => {
                         setId(_id)
                         openForm('request')
                         setOpen(!open)
                     }}
                     >
                         <EditIcon />
-                    </IconButton>
-                    <IconButton onClick={() => deleteRequest(_id)}>
+                    </IconButton>}
+                    {canDelete && <IconButton onClick={() => deleteRequest(_id)}>
                         <DeleteIcon />
-                    </IconButton>
+                    </IconButton>}
                 </div>
                 <Chip label={status} color="primary" variant="outlined" size="small" style={{ fontFamily: `'Baloo 2', cursive` }} />
                 {expanded && (

@@ -79,6 +79,7 @@
     border-radius: 5px;
     box-shadow: none;
     color: black;
+    min-width: 300px;
     transition-duration: 0.3s;
     text-align: center;
 }
@@ -96,4 +97,9 @@
 
 .skillTags > * {
     margin: 1px
+}
+
+.field {
+    display: block;
+    margin-bottom: .5em;    
 }

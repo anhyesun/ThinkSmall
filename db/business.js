@@ -10,6 +10,7 @@ db.businesses.insertMany([
         requests: ['5f04e72670a68be788efaf60'],
         tags: [{ label: 'Call for Designers' }, { label: 'Clothing' }],
     }, {
+        _id: ObjectId('5f04a784073af3659c1b0952'),
         storeName: 'Hunter & Hare',
         imageUrl: 'https://images.unsplash.com/photo-1464869372688-a93d806be852?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80',
         storeOwner: 'Joanne Bousaleh',
